@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 public/*
-!public/
+!public/logo.png
 dev
 dist
 dist-ssr
