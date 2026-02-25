@@ -1,153 +1,210 @@
-// Место на карте и его характеристики, данные защищенность места расположенность к опасности +- доступ к воде к еде защищенность от погодных условий
+interface DataSheltersItem {
+    id: number;
+    folder: string;
+    name: string;
+    imgThumb: string;
+    imgMain: string;
+    imgInv: string;
+    selected: boolean;
+    active: boolean;
+    coord: number;
+    inventory: Array<string>
+};
 
-export default [
+const dataShelters: DataSheltersItem[] = [
     {
         id: 1,
+        folder: "",
         name: "Prison",
-        thumbnail: "prison",
-        img: "",
+        imgThumb: "prison",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 234,
+        inventory: []
     },
     {
         id: 2,
+        folder: "",
         name: "Boat on Water",
-        thumbnail: "boat-on-water",
-        img: "",
+        imgThumb: "boat-on-water",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 369,
+        inventory: []
     },
     {
         id: 3,
+        folder: "",
         name: "Building",
-        thumbnail: "building",
-        img: "",
+        imgThumb: "building",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 58,
+        inventory: []
     },
     {
         id: 4,
-        folder: "bus",
-        name: "BuS prison", /* название убежища */
-        thumbnail: "bus-thumb", /* миниатюра убежища (картинка общего вида)*/
-        img: "bus-img", /* картинка, как выглядит внутри */
-        inventory: "bus-inventory", /** как выглядит место склада */
+        folder: "bus",  /* название папки где хранятся картинки  */
+        name: "BuS prison", /* название убежища  */
+        imgThumb: "bus-thumb", /* миниатюра убежища (картинка общего вида) */
+        imgMain: "bus-img", /* картинка, как выглядит внутри */
+        imgInv: "bus-inventory", /* как выглядит место склада */
         selected: true, /* флаг для выбора на карте */
         active: true,   /* флаг если мы находимяся в эом убежище */
         coord: 236,
-        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"]
-        /*массив СКЛАД какой товар лежит и массив ферма что растет на этой точке*/ 
+        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"] /*массив СКЛАД какой товар лежит и массив ферма что растет на этой точке*/ 
     },
     {
         id: 5,
+        folder: "",
         name: "The scavengers",
-        thumbnail: "containers",
-        img: "",
+        imgThumb: "containers",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 187,
+        inventory: []
     },
     {
         id: 6,
+        folder: "",
         name: "Boat on Land",
-        thumbnail: "boat-on-land",
-        img: "",
+        imgThumb: "boat-on-land",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 346,
+        inventory: []
     },
     {
         id: 7,
+        folder: "",
         name: "Electric Train",
-        thumbnail: "electric-train",
-        img: "",
+        imgThumb: "electric-train",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 75,
+        inventory: []
     },
     {
         id: 8,
+        folder: "",
         name: "Farm By Hershel Green",
-        thumbnail: "farm",
-        img: "",
+        imgThumb: "farm",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 129,
+        inventory: []
     },
     {
         id: 9,
+        folder: "",
         name: "Factory Negan",
-        thumbnail: "factory",
-        img: "",
+        imgThumb: "factory",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 154,
+        inventory: []
     },
     {
         id: 10,
+        folder: "",
         name: "Gas Station",
-        thumbnail: "gas-station",
-        img: "",
+        imgThumb: "gas-station",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 171,
+        inventory: []
     },
     {
         id: 11,
+        folder: "",
         name: "Old City",
-        thumbnail: "old-city",
-        img: "",
+        imgThumb: "old-city",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 67,
+        inventory: []
     },
     {
         id: 12,
+        folder: "",
         name: "Radio Tower",
-        thumbnail: "radio-tower",
-        img: "",
+        imgThumb: "radio-tower",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 248,
+        inventory: []
     },
     {
         id: 13,
+        folder: "",
         name: "Trailer",
-        thumbnail: "trailer",
-        img: "",
+        imgThumb: "trailer",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 92,
+        inventory: []
     },
     {
         id: 14,
+        folder: "",
         name: "Water Tower",
-        thumbnail: "water-tower",
-        img: "",
+        imgThumb: "water-tower",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 178,
+        inventory: []
     },
     {
         id: 15,
+        folder: "",
         name: "Boat on Water",
-        thumbnail: "boat-on-water",
-        img: "",
+        imgThumb: "boat-on-water",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
         coord: 29,
+        inventory: []
     },
     {
         id: 16,
+        folder: "",
         name: "Destroyed Building",
-        thumbnail: "destroyed-building",
-        img: "",
+        imgThumb: "destroyed-building",
+        imgMain: "",
+        imgInv: "",
         selected: false,
         active: false,
-        coord: 118
+        coord: 118,
+        inventory: []
     }
 
-]
+];
+
+export default dataShelters;
