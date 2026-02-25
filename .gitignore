@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 public/*
+!public/
 dev
 dist
 dist-ssr
