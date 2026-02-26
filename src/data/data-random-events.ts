@@ -10,7 +10,7 @@ interface DataRandomEventsItem {
     action: string;
 };
 
-const dataRandomEvents: DataRandomEventsItem[] = [
+export const DATA_RANDOM_EVENTS: DataRandomEventsItem[] = [
     {
         id: 1,
         name: "Заплутавшая белка",
@@ -40,5 +40,3 @@ const dataRandomEvents: DataRandomEventsItem[] = [
         action: "eat-bacon"
     },
 ];
-
-export default dataRandomEvents;

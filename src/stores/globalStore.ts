@@ -1,6 +1,6 @@
-import DATA_HEROES from "@/data/data-heroes.js";
-import DATA_SHELTERS from "@/data/data-shelters.js";
-import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.js";
+import { DATA_HEROES } from "@/data/data-heroes.ts";
+import { DATA_SHELTERS } from "@/data/data-shelters.ts";
+import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts";
 
 import { defineStore } from "pinia";
 import { reactive, ref, computed } from "vue";

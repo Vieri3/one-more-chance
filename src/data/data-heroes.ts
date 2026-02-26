@@ -22,7 +22,7 @@ interface DataHeroesItem {
     }
 };
 
-const dataHeroes: DataHeroesItem[] = [
+export const DATA_HEROES: DataHeroesItem[] = [
     {
         id: 1,                  /* ID героя */
         name: "Banchini",       /* имя героя */
@@ -1465,9 +1465,6 @@ const dataHeroes: DataHeroesItem[] = [
         }
     },
 ];
-
-export default dataHeroes;
-
 
 
 // в разработке

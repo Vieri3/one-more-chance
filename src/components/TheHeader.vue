@@ -2,7 +2,7 @@
 
 import AppMenu from '@/components/AppMenu.vue';
 
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 
 // при переходе на страницу сохранять в localstorage потому что считывает с хранилища localstorage;
 const { saveGame } = useGlobalStore();

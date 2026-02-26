@@ -9,7 +9,7 @@ interface DataStuffItem {
     warming: number;
 }
 
-const dataStuff: DataStuffItem[] = [
+export const dataStuff: DataStuffItem[] = [
     {
         id: 1,                          /* id */
         category: "clothes",            /* категория к которой относится предмет */
@@ -121,5 +121,3 @@ const dataStuff: DataStuffItem[] = [
         warming: 0,
     }
 ];
-
-export default dataStuff;

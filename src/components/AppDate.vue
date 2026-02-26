@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();

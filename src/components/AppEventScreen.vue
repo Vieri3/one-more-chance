@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
-import DATA_RANDOM_EVENTS from '@/data/data-random-events.js'; 
+import { DATA_RANDOM_EVENTS } from '@/data/data-random-events.ts'; 
 
 import { reactive, watch } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 
 const { saveGame } = useGlobalStore();
 

@@ -11,7 +11,7 @@ interface DataSheltersItem {
     inventory: Array<string>
 };
 
-const dataShelters: DataSheltersItem[] = [
+export const DATA_SHELTERS: DataSheltersItem[] = [
     {
         id: 1,
         folder: "",
@@ -206,5 +206,3 @@ const dataShelters: DataSheltersItem[] = [
     }
 
 ];
-
-export default dataShelters;

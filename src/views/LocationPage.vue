@@ -10,7 +10,7 @@ import AppWindowHeroHaracteristics from '@/components/AppWindowHeroHaracteristic
 import TheFooter from '@/components/TheFooter.vue';
 
 import { ref, onMounted } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();
@@ -26,7 +26,9 @@ const triggerRandomEvents = ref(false);
 const triggerLoadingDayNigh = ref(false);
 const idHeroIdGroop = ref(0);
 
-const getIdHero = (id) => idHeroIdGroop.value = id
+const getIdHero = (id) => idHeroIdGroop.value = id;
+
+
 
 </script>
 

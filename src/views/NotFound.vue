@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// cd d:\raketchik\vscode\one-more-chance
-</script>
+<script setup lang="ts"></script>
 
 <template>
 

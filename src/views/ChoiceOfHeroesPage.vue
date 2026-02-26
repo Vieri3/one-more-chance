@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // импортируем по дефолту функцию 
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 //storeToRefs — функция библиотеки Pinia для управления состоянием в Vue.js, 
 //которая позволяет корректно извлекать реактивные свойства состояния (state)
 // и геттеров (getters) без потери реактивности. 
@@ -37,7 +37,7 @@ loadData()
             <div v-for="hero in getArrayHeroes" :class="lenArrayHeroesIdSelected > 2 ? 'pointer-events-none' : ''"
                 :key="hero.id">
                 <img class="h-18 hover:scale-130 cursor-pointer border-2 border-blue-400 hover:border-blue-600" :class="hero.selected == false ? '' : 'blinking-shadow pointer-events-none'"
-                    :id="hero.id" :src="'./heroes/' + hero.thumbnail + '.png'" :alt="hero.name" @click="addNewItem"/>
+                    :id="hero.id" :src="'./heroes/' + hero.imgThumb + '.png'" :alt="hero.name" @click="addNewItem"/>
             </div>
 
         </div>
@@ -69,7 +69,7 @@ loadData()
         <div
             class="col-start-1 col-span-1 row-start-1 row-span-4 lg:col-start-1 lg:col-span-1 lg:row-start-1 lg:row-span-4 ml-1 border-2 border-blue-600 bg-blue-200 flex flex-wrap mb-3 mt-2 items-center justify-content rounded justify-center">
             <div v-for="hero in getArraySelectedHeroes" :key="hero.id" class="p-2">
-                <img :src="'./heroes/' + hero.thumbnail + '.png'" :alt="hero.name" class="border-2 border-green-500" />
+                <img :src="'./heroes/' + hero.imgThumb + '.png'" :alt="hero.name" class="border-2 border-green-500" />
             </div>
         </div>
 
