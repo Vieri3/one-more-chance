@@ -6,16 +6,11 @@ import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <template>
-
     <TheHeader />
-
     <div class="w-200 h-150 flex justify-center mx-auto">
         <h2 class="text-2xl text-red-500">ферма</h2>
     </div>
-
     <TheFooter />
-
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

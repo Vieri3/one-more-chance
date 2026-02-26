@@ -8,31 +8,33 @@ import { useGlobalStore } from '@/stores/globalStore.ts';
 const { saveGame } = useGlobalStore();
 
 const massPage = [
-    {text: "Склад", href: "/inventory"},
-    {text: "Ферма", href: "/farm"},
-    {text: "Группа", href: "/groop"},
-    {text: "Локация", href: "/location"},
-    {text: "Карта", href: "/map"},
+    { text: "Склад", href: "/inventory" },
+    { text: "Ферма", href: "/farm" },
+    { text: "Группа", href: "/groop" },
+    { text: "Локация", href: "/location" },
+    { text: "Карта", href: "/map" },
 ];
 
 </script>
  
 <template>
     <header class="w-200 h-6.25 flex mx-auto border border-amber-900 bg-gray-700 main-font ">
-            <nav class="w-150">
-                <ul class="*:cursor-pointer flex justify-around">
-                    <li v-for="page in massPage" class="hover:text-amber-500" @click="saveGame()">
-                        <router-link :to="page.href">{{ page.text }}</router-link> 
-                    </li>
-                </ul>
-            </nav>
+        <nav class="w-150">
+            <ul class="*:cursor-pointer flex justify-around">
+                <li
+                    v-for="page in massPage"
+                    class="hover:text-amber-500"
+                    @click="saveGame()"
+                >
+                    <router-link :to="page.href">{{ page.text }}</router-link>
+                </li>
+            </ul>
+        </nav>
         <AppMenu />
     </header>
 </template>
 
 <style scoped>
-.router-link-active{
+.router-link-active {
     color: #f59e0b !important;
-}
-
-</style>
+}</style>

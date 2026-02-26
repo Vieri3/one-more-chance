@@ -61,23 +61,34 @@ const getPatrolling = () => {
 </script>
 
 <template>
-
     <!--Случайное событие -->
-    <button @click="getRandomEvents" class="w-8 h-15 border-sky-600 bg-yellow-600 hover:bg-yellow-900 hover:scale-110"
-        :class="getCounters.countRandomEvents > 0 ? '' : 'pointer-events-none opacity-50'">
+    <button
+        @click="getRandomEvents"
+        class="w-8 h-15 border-sky-600 bg-yellow-600 hover:bg-yellow-900 hover:scale-110"
+        :class="getCounters.countRandomEvents > 0 ? '' : 'pointer-events-none opacity-50'"
+    >
         &#127922;
-        <span v-if="getCounters.countRandomEvents > 0" class="text-black">x{{ getCounters.countRandomEvents }}</span>
+        <span
+            v-if="getCounters.countRandomEvents > 0"
+            class="text-black"
+        >x{{ getCounters.countRandomEvents }}</span>
     </button>
     <!--следующий день-->
-    <button @click="getNextDay"
-        class="w-8 h-15 border-sky-600 bg-purple-600 hover:bg-purple-900 hover:scale-110">&#9203;</button>
+    <button
+        @click="getNextDay"
+        class="w-8 h-15 border-sky-600 bg-purple-600 hover:bg-purple-900 hover:scale-110"
+    >&#9203;</button>
     <!--Патрулирование -->
-    <button @click="getPatrolling" class="w-8 h-15 border-yellow-600 bg-sky-600 hover:bg-sky-900 hover:scale-110"
-        :class="getCounters.countPatrolling > 0 ? '' : 'pointer-events-none opacity-50'">
-        &#128274;
-        <span v-if="getCounters.countPatrolling > 0" class="text-black">x{{ getCounters.countPatrolling }}</span>
-    </button>
-
-</template>
+    <button
+        @click="getPatrolling"
+        class="w-8 h-15 border-yellow-600 bg-sky-600 hover:bg-sky-900 hover:scale-110"
+    :class="getCounters.countPatrolling > 0 ? '' : 'pointer-events-none opacity-50'"
+>
+    &#128274;
+    <span
+        v-if="getCounters.countPatrolling > 0"
+        class="text-black"
+    >x{{ getCounters.countPatrolling }}</span>
+</button></template>
 
 <style scoped></style>

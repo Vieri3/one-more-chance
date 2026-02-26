@@ -18,11 +18,20 @@ watch(() => props.LDN, () => doubleToggle())
 </script>
 
 <template>
-    <Transition name="fade" mode="out-in">
-    <div class="bg" v-if="loadingDayNight" >
-        <img src="/different/day-night.png" alt="day-nigth">
-    </div>
-</Transition>
+    <Transition
+        name="fade"
+        mode="out-in"
+    >
+        <div
+            class="bg"
+            v-if="loadingDayNight"
+        >
+            <img
+                src="/different/day-night.png"
+                alt="day-nigth"
+            >
+        </div>
+    </Transition>
 </template>
 
 <style scoped>
@@ -65,6 +74,4 @@ img {
 .fade-enter-to,
 .fade-leave-from {
     opacity: 1;
-}
-
-</style>
+}</style>

@@ -34,58 +34,86 @@ loadData()
         <div
             class="col-start-2 col-span-9 row-start-1 row-span-7 lg:col-start-2 lg:col-span-9 lg:row-start-1 lg:row-span-7 grid grid-cols-9 justify-items-center content-between p-2">
 
-            <div v-for="hero in getArrayHeroes" :class="lenArrayHeroesIdSelected > 2 ? 'pointer-events-none' : ''"
-                :key="hero.id">
-                <img class="h-18 hover:scale-130 cursor-pointer border-2 border-blue-400 hover:border-blue-600" :class="hero.selected == false ? '' : 'blinking-shadow pointer-events-none'"
-                    :id="hero.id" :src="'./heroes/' + hero.imgThumb + '.png'" :alt="hero.name" @click="addNewItem"/>
+            <div
+                v-for="hero in getArrayHeroes"
+                :class="lenArrayHeroesIdSelected > 2 ? 'pointer-events-none' : ''"
+                :key="hero.id"
+            >
+                <img
+                    class="h-18 hover:scale-130 cursor-pointer border-2 border-blue-400 hover:border-blue-600"
+                    :class="hero.selected == false ? '' : 'blinking-shadow pointer-events-none'"
+                    :id="hero.id"
+                    :src="'./heroes/' + hero.imgThumb + '.png'"
+                    :alt="hero.name"
+                    @click="addNewItem"
+                />
             </div>
 
         </div>
 
         <!-- Кнопка очистить -->
-        <div @click="selectedHerosReset"
+        <div
+            @click="selectedHerosReset"
             :class="lenArrayHeroesIdSelected < 1 ? 'pointer-events-none opacity-25' : 'hover:border-red-500 hover:bg-blue-100 hover:text-red-500 cursor-pointer'"
-            class="text-black col-start-1 col-span-1 row-start-7 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-7 lg:row-span-1 mb-2 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400">
+            class="text-black col-start-1 col-span-1 row-start-7 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-7 lg:row-span-1 mb-2 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400"
+        >
             Сброс
         </div>
 
         <!-- Кнопка принять и выполнить -->
-        <div :class="lenArrayHeroesIdSelected < 1 ? 'pointer-events-none opacity-25' : 'hover:border-green-500 hover:bg-blue-100 hover:text-green-500'" @click="goToGamePage"
-            class=" text-black col-start-1 col-span-1 row-start-6 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-6 lg:row-span-1 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400 cursor-pointer">
+        <div
+            :class="lenArrayHeroesIdSelected < 1 ? 'pointer-events-none opacity-25' : 'hover:border-green-500 hover:bg-blue-100 hover:text-green-500'"
+            @click="goToGamePage"
+            class=" text-black col-start-1 col-span-1 row-start-6 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-6 lg:row-span-1 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400 cursor-pointer"
+        >
             ОК
         </div>
 
         <!-- Количество героев -->
-        <div v-if="lenArrayHeroesIdSelected < 3"
-            class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-blue-200 border-2 border-amber-600 text-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed">
+        <div
+            v-if="lenArrayHeroesIdSelected < 3"
+            class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-blue-200 border-2 border-amber-600 text-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed"
+        >
             {{ lenArrayHeroesIdSelected }}
         </div>
-        <div v-else
-            class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-amber-200 text-red-500 border-2 border-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed">
+        <div
+            v-else
+            class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-amber-200 text-red-500 border-2 border-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed"
+        >
             MAX!!!
         </div>
 
         <!-- выбранные персонажи -->
         <div
             class="col-start-1 col-span-1 row-start-1 row-span-4 lg:col-start-1 lg:col-span-1 lg:row-start-1 lg:row-span-4 ml-1 border-2 border-blue-600 bg-blue-200 flex flex-wrap mb-3 mt-2 items-center justify-content rounded justify-center">
-            <div v-for="hero in getArraySelectedHeroes" :key="hero.id" class="p-2">
-                <img :src="'./heroes/' + hero.imgThumb + '.png'" :alt="hero.name" class="border-2 border-green-500" />
-            </div>
+            <div
+                v-for="hero in getArraySelectedHeroes"
+                :key="hero.id"
+                class="p-2"
+        >
+            <img
+                :src="'./heroes/' + hero.imgThumb + '.png'"
+                :alt="hero.name"
+                class="border-2 border-green-500"
+            />
         </div>
-
     </div>
-</template>
 
-<style scoped>
+</div></template>
 
-    .blinking-shadow{
-        box-shadow: 0 0 6px 2px #ED6742;
-        animation: blinkShadow 1s infinite alternate;
-        border: 2px solid #ED6742;
+<style scoped>.blinking-shadow {
+    box-shadow: 0 0 6px 2px #ED6742;
+    animation: blinkShadow 1s infinite alternate;
+    border: 2px solid #ED6742;
+}
+
+@keyframes blinkShadow {
+    from {
+        box-shadow: transparent;
     }
-    @keyframes blinkShadow {
-        from{ box-shadow: transparent; }
-        to { box-shadow: 0 0 0 #ED6742;; }  
-    }
 
-</style>
+    to {
+        box-shadow: 0 0 0 #ED6742;
+        ;
+    }
+}</style>
