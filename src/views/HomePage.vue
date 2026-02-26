@@ -8,16 +8,16 @@ const { loadData } = useGlobalStore();
 // функция при загрузке страницы меняет картинки background
 onMounted(() => {
     const RAND_NUM = Math.floor(Math.random() * 5);
-    const bgElement = document.querySelector('.start-bg');
+    const bgElement = document.querySelector<HTMLElement>('.start-bg');
     if (bgElement) bgElement.style.backgroundImage = `url('/home-page/start-bg-${RAND_NUM}.jpg')`;
     loadData();
 });
 
 const router = useRouter();
 
-const isModalSettingOpen = ref(false);
-const isModalAboutOpen = ref(false);
-const isModalNewGame = ref(false);
+const isModalSettingOpen = ref<boolean>(false);
+const isModalAboutOpen = ref<boolean>(false);
+const isModalNewGame = ref<boolean>(false);
 
 const loadGame = localStorage.getItem('one-more-chance');
 
@@ -25,7 +25,7 @@ const loadGame = localStorage.getItem('one-more-chance');
 const goToNewGame = () => loadGame ? isModalNewGame.value = true : router.push('/choice-of-heroes');
 
 // начинаем игру поновой стирая сохранения предыдущей
-const goToAgainGame = () => {
+const goToAgainGame = (): void => {
     isModalNewGame.value = false;
     localStorage.removeItem('one-more-chance');
     router.push('/choice-of-heroes');

@@ -9,7 +9,7 @@ const { getArrayHeroes } = storeToRefs(globalStore);
 
 const props = defineProps(['idHero']);
 
-const objHero = computed(() => getArrayHeroes.value.find(obj => obj.id == props.idHero))
+const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id == props.idHero))
 
 </script>
 

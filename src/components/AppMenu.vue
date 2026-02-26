@@ -9,7 +9,7 @@ const { saveGame } = useGlobalStore();
 const router = useRouter();
 const goToHomePage = () => router.replace('/');
 
-const isModalSaveGame = ref(false);
+const isModalSaveGame = ref<boolean>(false);
 
 const saveCurrentProgress = () => {
     isModalSaveGame.value = !isModalSaveGame.value

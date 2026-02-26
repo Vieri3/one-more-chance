@@ -13,9 +13,17 @@ const props = defineProps({
     triggerRE: Boolean
 })
 
-const randomEvents = reactive({});
+interface RandomEventsState {
+  name: string;
+  description: string;
+}
 
-function getRandomEvents() {
+const randomEvents = reactive<RandomEventsState>({
+    name: "",
+    description: ""
+});
+
+function getRandomEvents(): void {
     const RAND_NUM = Math.floor(Math.random() * DATA_RANDOM_EVENTS.length);
     const RAND_EVENTS = DATA_RANDOM_EVENTS[RAND_NUM];
     randomEvents.name = RAND_EVENTS.name;

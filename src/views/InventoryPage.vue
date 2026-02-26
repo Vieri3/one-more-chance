@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
-// при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалном хранилище из localstorage или с default БД
+// при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалbном хранилище из localstorage или с default БД
 import { useGlobalStore } from '@/stores/globalStore.js';
 const { loadData } = useGlobalStore();
 loadData();
@@ -14,7 +14,7 @@ loadData();
 const globalStore = useGlobalStore();
 const { getObjMap } = storeToRefs(globalStore);
 
-const actIdx = ref(0)
+const actIdx = ref<number>(0)
 
 const navInventar = [
     { text: "Всё" },
@@ -23,7 +23,7 @@ const navInventar = [
     { text: "Одежда" }
 ]
 
-const setActItem = (idx) => {
+const setActItem = (idx: number): void => {
     actIdx.value = idx
 };
 

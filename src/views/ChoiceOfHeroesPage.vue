@@ -18,7 +18,7 @@ const { lenArrayHeroesIdSelected, getArrayHeroes, getArraySelectedHeroes } = sto
 const { selectedItem, selectedHerosReset, loadData } = globalStore;
 
 // Метод добавления 
-const addNewItem = (event) => selectedItem(event.target.id);
+const addNewItem = (event: any) => selectedItem(event.target.id);
 
 const goToGamePage = () => router.replace('/location');
 
@@ -99,9 +99,11 @@ loadData()
         </div>
     </div>
 
-</div></template>
+</div>
+</template>
 
-<style scoped>.blinking-shadow {
+<style scoped>
+.blinking-shadow {
     box-shadow: 0 0 6px 2px #ED6742;
     animation: blinkShadow 1s infinite alternate;
     border: 2px solid #ED6742;
@@ -116,4 +118,5 @@ loadData()
         box-shadow: 0 0 0 #ED6742;
         ;
     }
-}</style>
+}
+</style>

@@ -9,39 +9,39 @@ const globalStore = useGlobalStore();
 const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveGame, getPowerModeStore } = useGlobalStore();
 const { getCounters } = storeToRefs(globalStore);
 
-const getRandomEvents = async () => {
+const getRandomEvents = async (): Promise<void> => {
     // передаем триггер эмитс наверх событие для вызова функции getRandomEvents() из файла AppEventsScreen.vue и для вывода случайного события на экран
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         emits('triggerRE');
         resolve()
     });
     // функция счетчика для случайных событий (х3)
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         stepRandomEvents();
         resolve()
     });
     // функция сохранения игры 
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         saveGame();
         resolve()
     });
 }
 
-const getNextDay = async () => {
+const getNextDay = async (): Promise<void> => {
     // передаем триггер эмитс наверх событие для заставки НОЧЬ ДЕНЬ
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         emits('triggerLDN');
         resolve()
     });
 
     // меняем дату
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         getCalendarStore();
         resolve()
     });
 
     // меняем погоду
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
         getWeatherStore();
         resolve()
     });
