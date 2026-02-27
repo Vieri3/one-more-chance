@@ -52,9 +52,9 @@ const setActItem = (idx: number): void => {
                 class="h-57 grid grid-cols-9 justify-items-center items-center border-2 border-white *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded">
                 <div v-for="idx in 27">
                     <img
-                        v-if="idx <= Object.keys(getObjMap.inventory).length"
+                        v-if="idx <= Object.keys(getObjMap!.inventory).length"
                         class="p-2"
-                        :src="'/inventory/' + getObjMap.inventory[idx - 1] + '.png'"
+                        :src="'/inventory/' + getObjMap?.inventory[idx - 1] + '.png'"
                         alt="..."
                     >
                 </div>
@@ -68,7 +68,7 @@ const setActItem = (idx: number): void => {
 
 <style scoped>
 .bg-image {
-    background-image: url("/inventory/inventory-bus-bg.jpg");
+    background-image: url("/map/bus/bus-inventory.png");
     background-size: cover;
     /* Пропорции изображения сохранены */
     background-repeat: no-repeat;

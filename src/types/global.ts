@@ -49,6 +49,8 @@ export interface IDataSheltersItem {
     imgThumb: string;
     imgMain: string;
     imgInv: string;
+    imgFarm: string;
+    imgGroop: string;
     selected: boolean;
     active: boolean;
     coord: number;

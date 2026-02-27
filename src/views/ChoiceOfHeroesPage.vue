@@ -42,7 +42,7 @@ loadData()
                 <img
                     class="h-18 hover:scale-130 cursor-pointer border-2 border-blue-400 hover:border-blue-600"
                     :class="hero.selected == false ? '' : 'blinking-shadow pointer-events-none'"
-                    :id="hero.id"
+                    :id="hero.id.toString()"
                     :src="'./heroes/' + hero.imgThumb + '.png'"
                     :alt="hero.name"
                     @click="addNewItem"

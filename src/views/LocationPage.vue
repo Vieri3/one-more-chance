@@ -40,8 +40,8 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
             <!--главное окно, где либо карта, либо картинка убежища изнутри-->
             <img
                 class="h-auto"
-                :src="'/map/bus/' + getObjMap.img + '.jpg'"
-                :alt="getObjMap.name"
+                :src="'/map/bus/' + getObjMap?.imgMain + '.png'"
+                :alt="getObjMap?.name"
             />
 
             <!-- окно сообщение событий рандомных -->
@@ -57,8 +57,8 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
             <!-- mini-map -->
             <section class="size-50 border border-amber-500">
                 <img
-                    :src="'/map/' + getObjMap.thumbnail + '.jpg'"
-                    :alt="getObjMap.name"
+                    :src="'/map/bus/' + getObjMap?.imgThumb + '.png'"
+                    :alt="getObjMap?.name"
                 />
             </section>
 
@@ -70,9 +70,9 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
                     class="border border-red-500 cursor-pointer overflow-hidden"
                 >
                     <img
-                        :id="hero.id"
+                        :id="hero.id.toString()"
                         class="max-h-25 hover:scale-120 transition-transform duration-300"
-                        :src="'./heroes/' + hero.thumbnail + '.png'"
+                        :src="'./heroes/' + hero.imgThumb + '.png'"
                         :alt="hero.name"
                     />
                 </div>

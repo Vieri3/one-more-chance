@@ -9,6 +9,7 @@ import TheFooter from '@/components/TheFooter.vue';
     <TheHeader />
     <div class="w-200 h-150 flex justify-center mx-auto">
         <h2 class="text-2xl text-red-500">ферма</h2>
+        <img src="/map/bus/bus-farm.png" alt="...">
     </div>
     <TheFooter />
 </template>

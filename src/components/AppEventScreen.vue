@@ -31,10 +31,10 @@ function getRandomEvents(): void {
 
     switch (RAND_EVENTS.position) {
         case 'inventory':
-            getObjMap.value.inventory.push(RAND_EVENTS.action) // сделать проверку если уже много в инвентаре предложить чтото выкинуть
+            getObjMap.value?.inventory.push(RAND_EVENTS.action) // сделать проверку если уже много в инвентаре предложить чтото выкинуть
             break;
         case 'people':
-            getObjMap.value.inventory.push(RAND_EVENTS.action) // переделать на то чтобы класть в рюкзаки героев
+            getObjMap.value?.inventory.push(RAND_EVENTS.action) // переделать на то чтобы класть в рюкзаки героев
             break;
         default:
             alert("всё.. приплыли");

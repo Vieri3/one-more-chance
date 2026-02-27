@@ -11,7 +11,7 @@ import TheFooter from '@/components/TheFooter.vue';
         <article class="w-150 relative">
             <img
                 class="h-auto"
-                src="/map/map.jpg"
+                src="/map/map.png"
                 alt="Главная карта"
             >
         </article>

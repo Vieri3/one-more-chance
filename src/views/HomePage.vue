@@ -9,7 +9,7 @@ const { loadData } = useGlobalStore();
 onMounted(() => {
     const RAND_NUM = Math.floor(Math.random() * 5);
     const bgElement = document.querySelector<HTMLElement>('.start-bg');
-    if (bgElement) bgElement.style.backgroundImage = `url('/home-page/start-bg-${RAND_NUM}.jpg')`;
+    if (bgElement) bgElement.style.backgroundImage = `url('/home-page/start-bg-${RAND_NUM}.png')`;
     loadData();
 });
 
