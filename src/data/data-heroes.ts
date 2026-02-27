@@ -1,28 +1,6 @@
-interface DataHeroesItem {
-    id: number;
-    name: string;
-    male: string;
-    year: number;
-    ethnicity: string;
-    imgThumb: string;
-    selected: boolean;
-    status: string;
-    desc: string;
-    inventory: Array<string>;
-    health: number;
-    attack: number;
-    protection: number;
-    satieti_food: number;
-    satieti_water: number;
-    equipment: {
-        head: string,
-        body: string,
-        legs: string,
-        foot: string,
-    }
-};
+import { IDataHeroesItem } from '@/types/global.ts';
 
-export const DATA_HEROES: DataHeroesItem[] = [
+export const DATA_HEROES: IDataHeroesItem[] = [
     {
         id: 1,                  /* ID героя */
         name: "Banchini",       /* имя героя */

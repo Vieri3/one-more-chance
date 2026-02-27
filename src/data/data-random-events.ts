@@ -1,22 +1,12 @@
-// события --  имя события для вывода в футер загравно h3
-// position - с кем будет происходить с людьми, базой, складом
-//action - то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает )
+import { IDataRandomEventsItem } from '@/types/global.ts';
 
-interface DataRandomEventsItem {
-    id: number;
-    name: string;
-    position: string;
-    description: string;
-    action: string;
-};
-
-export const DATA_RANDOM_EVENTS: DataRandomEventsItem[] = [
+export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
     {
         id: 1,
         name: "Заплутавшая белка",
-        position: "inventory",
+        position: "inventory",  /* с кем будет происходить с людьми, базой, складом */
         description: "Случайная белка попала в капкан, увесистая, килограмм так на 8. Ужин на 2 человека точно",
-        action: "eat-bacon"
+        action: "eat-bacon" /* то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает ) */
     },
     {
         id: 2,

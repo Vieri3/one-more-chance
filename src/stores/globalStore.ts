@@ -1,3 +1,5 @@
+import { ILoadData } from '@/types/global.ts'
+
 import { DATA_HEROES } from "@/data/data-heroes.ts";
 import { DATA_SHELTERS } from "@/data/data-shelters.ts";
 import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts";
@@ -8,10 +10,16 @@ import { reactive, ref, computed } from "vue";
 export const useGlobalStore = defineStore('global', () => {
 
     // реактивный массив всех данных
-    const globalArray = reactive({});
+    const globalArray = reactive<ILoadData>({
+        HEROES: [],
+        DATE: { date: 20, month: 1, year: 2026 },
+        SHELTERS: [],
+        WEATHER: { temperature: -2, precipitation: 'Снег' },
+        COUNTERS: { countRandomEvents: 3, countPatrolling: 2 },
+    });
 
     // массив id выбранных героев
-    const getArrayHeroesIdSelected = ref([]);
+    const getArrayHeroesIdSelected = ref<number[]>([]);
 
     // геттеры для получения массива героев
     const getArrayHeroes = computed(() => globalArray.HEROES);
@@ -19,11 +27,14 @@ export const useGlobalStore = defineStore('global', () => {
     // геттеры для получения длины массива ID героев
     const lenArrayHeroesIdSelected = computed(() => getArrayHeroesIdSelected.value.length);
 
-    // геттеры для получения героев имеющих флаг True (выбранных героевв)
-    const getArraySelectedHeroes = computed(() => globalArray.HEROES.filter(hero => hero.selected));
+    // геттеры для получения героев имеющих флаг True (выбранных героев)
+    // globalArray.HEROES?.filter(...): Знак вопроса перед точкой (?.) говорит TypeScript: "Если HEROES существует, вызови filter, если там null или undefined, верни undefined и не падай с ошибкой".
+    // ?? [] (для героев): Оператор ?? возвращает правую часть, если слева null или undefined. Это гарантирует, что геттер всегда возвращает массив, даже если данные еще не загружены. Это полезно, чтобы не ломать v-for в шаблоне.
+    const getArraySelectedHeroes = computed(() => globalArray.HEROES!.filter(hero => hero.selected));
 
     // геттеры для получения объекта локации из массива
-    const getObjMap = computed(() => globalArray.SHELTERS.find(el => el.selected));
+    // Возврат find: Метод .find() возвращает элемент (IShelter) или undefined (если ничего не найдено или массив null). Поэтому тип getObjMap будет IShelter | undefined.
+    const getObjMap = computed(() => globalArray.SHELTERS?.find(el => el.selected));
 
     //геттер для получения даты 
     const getDate = computed(() => globalArray.DATE);
@@ -59,33 +70,35 @@ export const useGlobalStore = defineStore('global', () => {
 
     // и меняем SELECTED флаг
     // и добавляем в ref id 
-    function selectedItem(callback) {
+    function selectedItem(callback: any) {
         getArrayHeroesIdSelected.value.push(callback);
-        const hero = globalArray.HEROES.find(h => h.id == callback);
-        hero.selected = true;
+        const hero = globalArray.HEROES!.find(h => h.id == callback);
+        hero!.selected = true;
     }
     //сброс всех флагов выбора игроков
-    function selectedHerosReset() {
+    const selectedHerosReset = () => {
         getArrayHeroesIdSelected.value = [];
-        return globalArray.HEROES.map(item => item.selected = false);
+        return globalArray.HEROES!.map(item => item.selected = false);
     }
     // счетчик случайных событий
     const stepRandomEvents = () => {
-        globalArray.COUNTERS.countRandomEvents--;
+        // Лучше всего явно проверить, что данные загружены, прежде чем что-то делать.
+        if(globalArray.COUNTERS) globalArray.COUNTERS.countRandomEvents--;
     }
     // счетчик событий патрулирования
     const stepCountPatrolling = () => {
-        globalArray.COUNTERS.countPatrolling--;
+        //Если вы абсолютно уверены, что функция stepCountPatrolling вызывается только после того, как данные загружены, можно использовать оператор ! (non-null assertion). Это говорит TypeScript: «Заткнись, я знаю, что тут не null».
+        globalArray.COUNTERS!.countPatrolling--;
     }
-    // послде прошедшего дня счетчики обнуляются
+    // после прошедшего дня счетчики обнуляются
     const resetCountREandP = () => {
-        globalArray.COUNTERS.countRandomEvents = 3;
-        globalArray.COUNTERS.countPatrolling = 2;
+        globalArray.COUNTERS!.countRandomEvents = 3;
+        globalArray.COUNTERS!.countPatrolling = 2;
     }
     // функция по клику производит кормежку группы 
     const getPowerModeStore = () => {
         // присваиваем константе массив группы героев с новыми параметрами после кормежки 
-        const arraySelectedHeroes = getPowerModeFn(globalArray.WEATHER.temperature, getArraySelectedHeroes.value);
+        const arraySelectedHeroes = getPowerModeFn(globalArray.WEATHER!.temperature, getArraySelectedHeroes.value);
        // делаем подмену массива героев которые за сутки проголодались и у них ушли параметры еда и вода
         getMergingArraysFn(globalArray.HEROES, arraySelectedHeroes)
     }
@@ -103,13 +116,13 @@ export const useGlobalStore = defineStore('global', () => {
 
     // календарь 
     const getCalendarStore = () => {
-        const dateNow = getCalendarFn(globalArray.DATE.date, globalArray.DATE.month, globalArray.DATE.year);
+        const dateNow = getCalendarFn(globalArray.DATE!.date, globalArray.DATE!.month, globalArray.DATE!.year);
         globalArray.DATE = dateNow
     }
     // функция получения погоды
     const getWeatherStore = () => {
         // погода в этот день
-        const weatherNow = getWeatherFn(getDate.value.month);
+        const weatherNow = getWeatherFn(getDate.value!.month);
         // записываем температуру в глобальный массив
         globalArray.WEATHER = weatherNow
     }

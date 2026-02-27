@@ -1,15 +1,6 @@
-interface DataStuffItem {
-    id: number;
-    category: string;
-    name: string;
-    src: string;
-    attack: number;
-    protection: number;
-    health: number;
-    warming: number;
-}
+import { IDataStuffItem } from  '@/types/global.ts'
 
-export const dataStuff: DataStuffItem[] = [
+export const dataStuff: IDataStuffItem[] = [
     {
         id: 1,                          /* id */
         category: "clothes",            /* категория к которой относится предмет */

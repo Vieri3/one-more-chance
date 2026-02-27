@@ -1,17 +1,6 @@
-interface DataSheltersItem {
-    id: number;
-    folder: string;
-    name: string;
-    imgThumb: string;
-    imgMain: string;
-    imgInv: string;
-    selected: boolean;
-    active: boolean;
-    coord: number;
-    inventory: Array<string>
-};
+import { IDataSheltersItem } from '@/types/global.ts'
 
-export const DATA_SHELTERS: DataSheltersItem[] = [
+export const DATA_SHELTERS: IDataSheltersItem[] = [
     {
         id: 1,
         folder: "",
