@@ -26,6 +26,8 @@ const idHeroInGroop = ref<number>(0);
 
 const getIdHero = (id: number): number => idHeroInGroop.value = id;
 
+console.log(getObjMap);
+
 </script>
 
 <template>
@@ -35,23 +37,16 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
         <!--просто анимация после нажатия кнопки следующий день-->
         <AppDayNightScreen :LDN="triggerLoadingDayNigh" />
 
-        <article class="w-150 relative">
-
-            <!--главное окно, где либо карта, либо картинка убежища изнутри-->
-            <img
-                class="h-auto"
-                :src="'/map/bus/' + getObjMap?.imgMain + '.png'"
-                :alt="getObjMap?.name"
-            />
+        <article class="w-150 bg-image flex flex-col justify-between" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgMain + '.png'})` }">
 
             <!-- окно сообщение событий рандомных -->
-            <section class="text-white border-yellow-600 bg-sky-600/50 border-4 absolute top-0 left-0 p-2 m-2 h-75 w-146">
+            <section class="text-white border-yellow-600 bg-sky-600/50 border-4 p-2 m-2 h-75 w-146">
 
             </section>
 
             <!-- окно сообщений, событий действий при патрулировании -->
             <section
-                class="text-white border-sky-600 bg-yellow-600/50 border-4 absolute bottom-0 left-0 p-2 m-2 h-50 w-146">
+                class="text-white border-sky-600 bg-yellow-600/50 border-4 p-2 m-2 h-50 w-146">
                 <AppEventScreen :triggerRE="triggerRandomEvents" />
             </section>
 
@@ -62,7 +57,7 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
             <!-- mini-map -->
             <section class="size-50 border border-amber-500">
                 <img
-                    :src="'/map/bus/' + getObjMap?.imgThumb + '.png'"
+                    :src="'/map/' + getObjMap?.folder + '/' + getObjMap?.imgThumb + '.png'"
                     :alt="getObjMap?.name"
                 />
             </section>

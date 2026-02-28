@@ -5,4 +5,14 @@
   font-weight: 600;
   color: rgb(0, 255, 0);
 }
+
+.bg-image {
+  /* Пропорции изображения сохранены */
+  background-size: cover;
+  /* Исключаем повторение */
+  background-repeat: no-repeat;
+  /* Центрируем изображение */
+  background-position: center;
+}
+
   

@@ -7,7 +7,7 @@ import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
 // при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалbном хранилище из localstorage или с default БД
-import { useGlobalStore } from '@/stores/globalStore.js';
+import { useGlobalStore } from '@/stores/globalStore.ts';
 const { loadData } = useGlobalStore();
 loadData();
 
@@ -32,9 +32,9 @@ const setActItem = (idx: number): void => {
 <template>
     <TheHeader />
 
-    <main class="w-200 h-150 mx-auto border border-amber-900 bg-image">
+    <main class="w-200 h-150 mx-auto border border-amber-900 bg-image" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgInv + '.png'})` }">
         <!--инвентарь-->
-        <section class="w-180 h-70 bg-gray-700/50 main-font  mt-2 mx-auto rounded">
+        <section class="w-180 h-70 bg-gray-700/50 main-font mt-2 mx-auto rounded">
             <nav class="h-10">
                 <ul
                     class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
@@ -67,16 +67,6 @@ const setActItem = (idx: number): void => {
 </template>
 
 <style scoped>
-.bg-image {
-    background-image: url("/map/bus/bus-inventory.png");
-    background-size: cover;
-    /* Пропорции изображения сохранены */
-    background-repeat: no-repeat;
-    /* Исключаем повторение */
-    background-position: center;
-    /* Центрируем изображение */
-}
-
 .active {
     border-top: 2px solid white;
     border-right: 2px solid white;
@@ -85,4 +75,5 @@ const setActItem = (idx: number): void => {
     color: #f59e0b;
     /*amber-500*/
     bottom: -2px;
-}</style>
+}
+</style>
