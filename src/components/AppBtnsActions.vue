@@ -76,6 +76,7 @@ const getPatrolling = () => {
     <!--следующий день-->
     <button
         @click="getNextDay"
+        :class="getCounters.countPatrolling > 0 ? 'pointer-events-none opacity-50' : ''"
         class="w-8 h-15 border-sky-600 bg-purple-600 hover:bg-purple-900 hover:scale-110"
     >&#9203;</button>
     <!--Патрулирование -->
