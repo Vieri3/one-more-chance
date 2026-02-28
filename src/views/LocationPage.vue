@@ -45,6 +45,11 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
             />
 
             <!-- окно сообщение событий рандомных -->
+            <section class="text-white border-yellow-600 bg-sky-600/50 border-4 absolute top-0 left-0 p-2 m-2 h-75 w-146">
+
+            </section>
+
+            <!-- окно сообщений, событий действий при патрулировании -->
             <section
                 class="text-white border-sky-600 bg-yellow-600/50 border-4 absolute bottom-0 left-0 p-2 m-2 h-50 w-146">
                 <AppEventScreen :triggerRE="triggerRandomEvents" />
@@ -85,17 +90,18 @@ const getIdHero = (id: number): number => idHeroInGroop.value = id;
                 <AppBtnsActions
                     @triggerRE="triggerRandomEvents = !triggerRandomEvents"
                     @triggerLDN="triggerLoadingDayNigh = !triggerLoadingDayNigh"
-            />
-        </section>
+                />
+            </section>
 
-        <!-- Окно характеристики героя-->
-        <section class="h-48 border border-amber-400 flex items-center justify-center">
-            <AppWindowHeroHaracteristics :idHero="idHeroInGroop" />
-        </section>
-    </aside>
+            <!-- Окно характеристики героя-->
+            <section class="h-48 border border-amber-400 flex items-center justify-center">
+                <AppWindowHeroHaracteristics :idHero="idHeroInGroop" />
+            </section>
+        </aside>
 
-</main>
+    </main>
 
-<TheFooter /></template>
+    <TheFooter />
+</template>
 
 <style scoped></style>
