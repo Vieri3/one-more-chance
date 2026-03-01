@@ -4,12 +4,12 @@ import { IGetWeather, IGetDate, IDataHeroesItem } from '@/types/global.ts'
 export function getPowerModeFn(temperature: number, groop: IDataHeroesItem[]): IDataHeroesItem[] | never {
     function getGluttony(eat: number, water: number, groop: IDataHeroesItem[]): IDataHeroesItem[] {
         return groop.map((item) => {
-            const new_satieti_food = item.satieti_food - eat;
-            const new_satieti_water = item.satieti_water - water;
+            const new_satieti_food = item.satietiFood - eat;
+            const new_satieti_water = item.satietiWater - water;
             if (new_satieti_food <= 0 || new_satieti_water <= 0) {
-                return { ...item, satieti_food: new_satieti_food, satieti_water: new_satieti_water, status: "dead" };
+                return { ...item, satietiFood: new_satieti_food, satietiWater: new_satieti_water, status: "dead" };
             } else {
-                return { ...item, satieti_food: new_satieti_food, satieti_water: new_satieti_water };
+                return { ...item, satietiFood: new_satieti_food, satietiWater: new_satieti_water };
             }
         })
     }
@@ -25,7 +25,7 @@ export function getPowerModeFn(temperature: number, groop: IDataHeroesItem[]): I
         return getGluttony(5, 20, groop);
     }
 
-    throw new Error("Поюбому что-то да вернет")
+    throw new Error("Ошибочка!!!")
 }
 
 // функция которая подменяет измененный массив с параметрами героев группы в основной массив всех героев глобального массива

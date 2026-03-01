@@ -24,8 +24,8 @@ export interface IDataHeroesItem {
     health: number;
     attack: number;
     protection: number;
-    satieti_food: number;
-    satieti_water: number;
+    satietiFood: number;
+    satietiWater: number;
     equipment: {
         head: string,
         body: string,

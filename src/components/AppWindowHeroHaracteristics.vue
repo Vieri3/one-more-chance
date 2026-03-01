@@ -78,8 +78,10 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         </div>
         <!-- Очки сытости героя -->
         <div
-            class="col-start-5 col-span-1 row-start-4 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-4 lg:row-span-1 text-xs">
-            {{ objHero?.satieti_food }}
+            class="col-start-5 col-span-1 row-start-4 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-4 lg:row-span-1 text-xs"
+            :class="objHero!.satietiFood <= 20 ? 'text-red-500': ''"
+            >
+            {{ objHero?.satietiFood }}
         </div>
         <!-- Значок жажды героя -->
         <div
@@ -88,8 +90,10 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         </div>
         <!-- Очки жажды героя (100 - нет жажды /// 0 - обезвоживание) -->
         <div
-        class="col-start-5 col-span-1 row-start-5 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1 text-xs">
-        {{ objHero?.satieti_water }}
+            class="col-start-5 col-span-1 row-start-5 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1 text-xs"
+            :class="objHero!.satietiWater <= 20 ? 'text-red-500': ''"
+        >
+        {{ objHero?.satietiWater }}
     </div>
 </div></template>
 
