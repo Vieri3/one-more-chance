@@ -1,5 +1,5 @@
 import { ILoadData } from '@/types/global.ts'
-
+import { dataDate, dataCounters, dataWeather } from '@/constants/config.ts'
 import { DATA_HEROES } from "@/data/data-heroes.ts";
 import { DATA_SHELTERS } from "@/data/data-shelters.ts";
 import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts";
@@ -12,10 +12,10 @@ export const useGlobalStore = defineStore('global', () => {
     // реактивный массив всех данных
     const globalArray = reactive<ILoadData>({
         HEROES: [],
-        DATE: { date: 20, month: 1, year: 2026 },
+        DATE: dataDate,
         SHELTERS: [],
-        WEATHER: { temperature: -2, precipitation: 'Снег' },
-        COUNTERS: { countRandomEvents: 3, countPatrolling: 2 },
+        WEATHER: dataWeather,
+        COUNTERS: dataCounters,
     });
 
     // массив id выбранных героев
@@ -58,10 +58,10 @@ export const useGlobalStore = defineStore('global', () => {
                 globalArray.COUNTERS = parsed_data.COUNTERS;
             } else {
                 globalArray.HEROES = DATA_HEROES;
-                globalArray.DATE = { date: 20, month: 1, year: 2026 };
+                globalArray.DATE = dataDate;
                 globalArray.SHELTERS = DATA_SHELTERS;
-                globalArray.WEATHER = { temperature: -2, precipitation: 'Снег' };
-                globalArray.COUNTERS = { countRandomEvents: 3, countPatrolling: 2 }
+                globalArray.WEATHER = dataWeather;
+                globalArray.COUNTERS = dataCounters;
             }
         } catch (error) {
             console.error('Ошибка загрузки: ', error)
@@ -70,15 +70,15 @@ export const useGlobalStore = defineStore('global', () => {
 
     // и меняем SELECTED флаг
     // и добавляем в ref id 
-    function selectedItem(callback: any) {
+    function selectedItem(callback: number) {
         getArrayHeroesIdSelected.value.push(callback);
-        const hero = globalArray.HEROES!.find(h => h.id == callback);
-        hero!.selected = true;
+        const hero = globalArray.HEROES.find(h => h.id == callback);
+        if(hero) hero.selected = true;
     }
     //сброс всех флагов выбора игроков
     const selectedHerosReset = () => {
         getArrayHeroesIdSelected.value = [];
-        return globalArray.HEROES!.map(item => item.selected = false);
+        globalArray.HEROES.map(item => item.selected = false);
     }
     // счетчик случайных событий
     const stepRandomEvents = () => {
