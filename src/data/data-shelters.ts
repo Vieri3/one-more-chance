@@ -13,7 +13,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 234,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 2,
@@ -27,7 +28,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 369,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 3,
@@ -41,7 +43,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 58,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 4,
@@ -55,7 +58,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: true, /* флаг для выбора на карте */
         active: true,   /* флаг если мы находимяся в эом убежище */
         coord: 236,
-        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"] /*массив СКЛАД какой товар лежит и массив ферма что растет на этой точке*/ 
+        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"], /*массив СКЛАД какой товар лежит и массив ферма что растет на этой точке*/ 
+        capacityInv: 27
     },
     {
         id: 5,
@@ -69,7 +73,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 187,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 6,
@@ -83,7 +88,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 346,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 7,
@@ -97,7 +103,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 75,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 8,
@@ -111,7 +118,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 129,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 9,
@@ -125,7 +133,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 154,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 10,
@@ -139,7 +148,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 171,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 11,
@@ -153,7 +163,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 67,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 12,
@@ -167,7 +178,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 248,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 13,
@@ -181,7 +193,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 92,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 14,
@@ -195,7 +208,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 178,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 15,
@@ -209,7 +223,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 29,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     },
     {
         id: 16,
@@ -223,7 +238,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: false,
         active: false,
         coord: 118,
-        inventory: []
+        inventory: [],
+        capacityInv: 10
     }
 
 ];

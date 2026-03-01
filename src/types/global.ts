@@ -55,6 +55,7 @@ export interface IDataSheltersItem {
     active: boolean;
     coord: number;
     inventory: Array<string>
+    capacityInv: number
 };
 
 export interface IDataStuffItem {

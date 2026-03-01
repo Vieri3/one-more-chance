@@ -34,8 +34,8 @@ const setActItem = (idx: number): void => {
 
     <main class="w-200 h-150 mx-auto border border-amber-900 bg-image" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgInv + '.png'})` }">
         <!--инвентарь-->
-        <section class="w-180 h-70 bg-gray-700/50 main-font mt-2 mx-auto rounded">
-            <nav class="h-10">
+        <section class="w-180 bg-gray-700/50 main-font mt-2 mx-auto rounded">
+            <nav class="">
                 <ul
                     class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
                     <li
@@ -49,8 +49,8 @@ const setActItem = (idx: number): void => {
                 </ul>
             </nav>
             <div
-                class="h-57 grid grid-cols-9 justify-items-center items-center border-2 border-white *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded">
-                <div v-for="idx in 27">
+                class="grid grid-cols-9 justify-items-center items-center border-2 border-t-0 pt-2 border-white  *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded *:mb-2">
+                <div v-for="idx in getObjMap?.capacityInv">
                     <img
                         v-if="idx <= Object.keys(getObjMap!.inventory).length"
                         class="p-2"
