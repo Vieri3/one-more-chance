@@ -10,6 +10,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 1,                  /* характеристика добавляющий к защите */
         health: 0,                      /* характеристика добавляющий к здоровью */ 
         warming: 2,                     /* характеристика характеризующий согрев (относится к одежде) от 1 - 10 */
+        satietiFood: 0,                 /* уталение голода */
+        satietiWater: 0,                /* уталение жажды */
     },
     {
         id: 2,
@@ -20,6 +22,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 1,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 3,
@@ -30,6 +34,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 2,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 4,
@@ -40,6 +46,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 2,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 5,
@@ -50,6 +58,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 2,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 6,
@@ -60,6 +70,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 0,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 7,
@@ -70,6 +82,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 0,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 8,
@@ -80,6 +94,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 2,
         health: 0,
         warming: 2,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 9,
@@ -90,6 +106,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 2,
         health: 0,
         warming: 0,
+        satietiFood: 0,                
+        satietiWater: 0, 
     },
     {
         id: 10,
@@ -100,6 +118,8 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 0,
         health: 5,
         warming: 0,
+        satietiFood: 10,                
+        satietiWater: 10, 
     },
     {
         id: 11,
@@ -110,5 +130,7 @@ export const dataStuff: IDataStuffItem[] = [
         protection: 0,
         health: 2,
         warming: 0,
+        satietiFood: 50,                
+        satietiWater: -10, 
     }
 ];

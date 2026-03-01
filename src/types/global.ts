@@ -67,6 +67,8 @@ export interface IDataStuffItem {
     protection: number;
     health: number;
     warming: number;
+    satietiFood: number,                
+    satietiWater: number, 
 };
 
 
