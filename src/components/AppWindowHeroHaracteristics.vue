@@ -9,7 +9,7 @@ const { getArrayHeroes } = storeToRefs(globalStore);
 
 const props = defineProps(['idHero']);
 
-const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id == props.idHero))
+const getDataHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id == props.idHero))
 
 </script>
 
@@ -32,14 +32,14 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <div
             class="col-start-1 col-span-3 row-start-1 row-span-4 lg:col-start-1 lg:col-span-3 lg:row-start-1 lg:row-span-4 p-2">
             <img
-                :src="'/heroes/' + objHero?.imgThumb + '.png'"
-                :alt="objHero?.name"
+                :src="'/heroes/' + getDataHero?.imgThumb + '.png'"
+                :alt="getDataHero?.name"
             >
         </div>
         <!-- Имя героя -->
         <div
             class="col-start-1 col-span-3 row-start-5 row-span-1 lg:col-start-1 lg:col-span-3 lg:row-start-5 lg:row-span-1">
-            <span class="text-sm">{{ objHero?.name }}</span>
+            <span class="text-sm">{{ getDataHero?.name }}</span>
         </div>
         <!-- Значок здоровья -->
         <div
@@ -49,7 +49,7 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <!-- Очки здоровья -->
         <div
             class="col-start-5 col-span-1 row-start-1 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-1 lg:row-span-1 text-xs">
-            {{ objHero?.health }}
+            {{ getDataHero?.health }}
         </div>
         <!-- Значок урона/атаки -->
         <div
@@ -59,7 +59,7 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <!-- Очки атаки/урона -->
         <div
             class="col-start-5 col-span-1 row-start-2 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-2 lg:row-span-1 text-xs">
-            {{ objHero?.attack }}
+            {{ getDataHero?.attack }}
         </div>
         <!-- Значок защиты героя -->
         <div
@@ -69,7 +69,7 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <!-- Очки защиты героя -->
         <div
             class="col-start-5 col-span-1 row-start-3 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-3 lg:row-span-1 text-xs">
-            {{ objHero?.protection }}
+            {{ getDataHero?.protection }}
         </div>
         <!-- Значок сытости героя -->
         <div
@@ -79,9 +79,9 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <!-- Очки сытости героя -->
         <div
             class="col-start-5 col-span-1 row-start-4 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-4 lg:row-span-1 text-xs"
-            :class="objHero!.satietiFood <= 20 ? 'text-red-500': ''"
+            :class="getDataHero!.satietiFood <= 20 ? 'text-red-500': ''"
             >
-            {{ objHero?.satietiFood }}
+            {{ getDataHero?.satietiFood }}
         </div>
         <!-- Значок жажды героя -->
         <div
@@ -91,9 +91,9 @@ const objHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id ==
         <!-- Очки жажды героя (100 - нет жажды /// 0 - обезвоживание) -->
         <div
             class="col-start-5 col-span-1 row-start-5 row-span-1 lg:col-start-5 lg:col-span-1 lg:row-start-5 lg:row-span-1 text-xs"
-            :class="objHero!.satietiWater <= 20 ? 'text-red-500': ''"
+            :class="getDataHero!.satietiWater <= 20 ? 'text-red-500': ''"
         >
-        {{ objHero?.satietiWater }}
+        {{ getDataHero?.satietiWater }}
     </div>
 </div></template>
 
