@@ -8,7 +8,7 @@ import AppWindowHeroHaracteristics from '@/components/AppWindowHeroHaracteristic
 import TheFooter from '@/components/TheFooter.vue';
 
 import { ref, onMounted } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore.ts';
+import { useGlobalStore } from '@/stores/globalStore';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();

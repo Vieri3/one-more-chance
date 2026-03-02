@@ -7,7 +7,7 @@ import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
 // при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалbном хранилище из localstorage или с default БД
-import { useGlobalStore } from '@/stores/globalStore.ts';
+import { useGlobalStore } from '@/stores/globalStore';
 const { loadData } = useGlobalStore();
 loadData();
 

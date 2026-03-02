@@ -1,4 +1,4 @@
-import { IDataSheltersItem } from '@/types/global.ts'
+import type { IDataSheltersItem } from '@/types/global-types'
 
 export const DATA_SHELTERS: IDataSheltersItem[] = [
     {

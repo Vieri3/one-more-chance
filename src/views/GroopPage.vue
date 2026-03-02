@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia';
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
-import { useGlobalStore } from '@/stores/globalStore.ts';
+import { useGlobalStore } from '@/stores/globalStore';
 const { loadData } = useGlobalStore();
 loadData();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { useGlobalStore } from '@/stores/globalStore.ts';
+import { useGlobalStore } from '@/stores/globalStore';
 import { storeToRefs } from 'pinia';
 
 const emits = defineEmits(['triggerRE', 'triggerLDN']);

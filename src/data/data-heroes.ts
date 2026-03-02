@@ -1,4 +1,4 @@
-import { IDataHeroesItem } from '@/types/global.ts';
+import type { IDataHeroesItem } from '@/types/global-types';
 
 export const DATA_HEROES: IDataHeroesItem[] = [
     {

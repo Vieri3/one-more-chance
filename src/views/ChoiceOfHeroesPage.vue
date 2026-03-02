@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // импортируем по дефолту функцию 
-import { useGlobalStore } from '@/stores/globalStore.ts';
+import { useGlobalStore } from '@/stores/globalStore';
 //storeToRefs — функция библиотеки Pinia для управления состоянием в Vue.js, 
 //которая позволяет корректно извлекать реактивные свойства состояния (state)
 // и геттеров (getters) без потери реактивности. 

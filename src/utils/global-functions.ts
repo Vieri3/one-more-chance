@@ -1,4 +1,4 @@
-import { IGetWeather, IGetDate, IDataHeroesItem } from '@/types/global.ts'
+import type { IGetWeather, IGetDate, IDataHeroesItem } from '@/types/global-types'
 
 // функция режима питания globalArray.WEATHER.temperature, getArraySelectedHeroes
 export function getPowerModeFn(temperature: number, groop: IDataHeroesItem[]): IDataHeroesItem[] | never {
