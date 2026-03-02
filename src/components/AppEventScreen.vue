@@ -17,8 +17,8 @@ interface RandomEventsState {
   name: string;
   description: string;
 }
-
-const randomEvents = reactive<RandomEventsState>({
+// Не рекомендуется использовать аргумент для джененрика reactive() СОВЕТ ОТ VUE
+const randomEvents: RandomEventsState  = reactive({
     name: "",
     description: ""
 });

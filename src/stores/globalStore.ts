@@ -10,7 +10,7 @@ import { reactive, ref, computed } from "vue";
 export const useGlobalStore = defineStore('global', () => {
 
     // реактивный массив всех данных
-    const globalArray = reactive<ILoadData>({
+    const globalArray: ILoadData  = reactive({
         HEROES: [],
         DATE: dataDate,
         SHELTERS: [],
