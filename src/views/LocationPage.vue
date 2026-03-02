@@ -12,7 +12,7 @@ import { useGlobalStore } from '@/stores/globalStore';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();
-const { getArraySelectedHeroes, getObjMap } = storeToRefs(globalStore);
+const { getArraySelectedHeroes, getDataSelectedShelter } = storeToRefs(globalStore);
 const { loadData, saveGame } = useGlobalStore();
 
 // при загрузке или перезагрузке страницы должен загрузиться реактивный мссив в глобалном хранилище из localstorage или с default БД
@@ -26,8 +26,6 @@ const idHeroInGroop = ref<number>(0);
 
 const getIdHero = (id: number): number => idHeroInGroop.value = id;
 
-console.log(getObjMap);
-
 </script>
 
 <template>
@@ -37,7 +35,7 @@ console.log(getObjMap);
         <!--просто анимация после нажатия кнопки следующий день-->
         <AppDayNightScreen :LDN="triggerLoadingDayNigh" />
 
-        <article class="w-150 bg-image flex flex-col justify-between" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgMain + '.png'})` }">
+        <article class="w-150 bg-image flex flex-col justify-between" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgMain + '.png'})` }">
 
             <!-- окно сообщение событий рандомных -->
             <section class="text-white border-yellow-600 bg-sky-600/50 border-4 p-2 m-2 h-75 w-146">
@@ -57,8 +55,8 @@ console.log(getObjMap);
             <!-- mini-map -->
             <section class="size-50 border border-amber-500">
                 <img
-                    :src="'/map/' + getObjMap?.folder + '/' + getObjMap?.imgThumb + '.png'"
-                    :alt="getObjMap?.name"
+                    :src="'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgThumb + '.png'"
+                    :alt="getDataSelectedShelter?.name"
                 />
             </section>
 

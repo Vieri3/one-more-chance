@@ -12,7 +12,7 @@ const { loadData } = useGlobalStore();
 loadData();
 
 const globalStore = useGlobalStore();
-const { getObjMap } = storeToRefs(globalStore);
+const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 const actIdx = ref<number>(0)
 
@@ -32,7 +32,7 @@ const setActItem = (idx: number): void => {
 <template>
     <TheHeader />
 
-    <main class="w-200 h-150 mx-auto border border-amber-900 bg-image" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgInv + '.png'})` }">
+    <main class="w-200 h-150 mx-auto border border-amber-900 bg-image" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgInv + '.png'})` }">
         <!--инвентарь-->
         <section class="w-180 bg-gray-700/50 main-font mt-2 mx-auto rounded">
             <nav class="">
@@ -50,11 +50,11 @@ const setActItem = (idx: number): void => {
             </nav>
             <div
                 class="grid grid-cols-9 justify-items-center items-center border-2 border-t-0 pt-2 border-white  *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded *:mb-2">
-                <div v-for="idx in getObjMap?.capacityInv">
+                <div v-for="idx in getDataSelectedShelter?.capacityInv">
                     <img
-                        v-if="idx <= Object.keys(getObjMap!.inventory).length"
+                        v-if="idx <= Object.keys(getDataSelectedShelter!.inventory).length"
                         class="p-2"
-                        :src="'/inventory/' + getObjMap?.inventory[idx - 1] + '.png'"
+                        :src="'/inventory/' + getDataSelectedShelter?.inventory[idx - 1] + '.png'"
                         alt="..."
                     >
                 </div>

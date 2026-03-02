@@ -10,13 +10,13 @@ const { loadData } = useGlobalStore();
 loadData();
 
 const globalStore = useGlobalStore();
-const { getObjMap } = storeToRefs(globalStore);
+const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 </script>
 
 <template>
     <TheHeader />
-    <div class="w-200 h-150 flex justify-center mx-auto bg-image" :style="{ backgroundImage: `url(${'/map/' + getObjMap?.folder + '/' + getObjMap?.imgGroop + '.png'})` }">
+    <div class="w-200 h-150 flex justify-center mx-auto bg-image" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgGroop + '.png'})` }">
         <h2 class="text-2xl text-red-500">герои группа храрактеристики</h2>
     </div>
     <TheFooter />

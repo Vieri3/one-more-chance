@@ -7,7 +7,7 @@ import { useGlobalStore } from '@/stores/globalStore';
 import { storeToRefs } from 'pinia';
 
 const globalStore = useGlobalStore();
-const { getObjMap } = storeToRefs(globalStore);
+const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 const props = defineProps({
     triggerRE: Boolean
@@ -34,11 +34,11 @@ function getRandomEvents(): void {
     switch (RAND_EVENTS.position) {
         case 'inventory':
             // сделать проверку если уже много в инвентаре предложить чтото выкинуть
-            getObjMap.value?.inventory.push(RAND_EVENTS.action) 
+            getDataSelectedShelter.value?.inventory.push(RAND_EVENTS.action) 
             break;
         case 'people':
             // переделать на то чтобы класть в рюкзаки героев
-            getObjMap.value?.inventory.push(RAND_EVENTS.action)  
+            getDataSelectedShelter.value?.inventory.push(RAND_EVENTS.action)  
             break;
         default:
             alert("всё.. приплыли");

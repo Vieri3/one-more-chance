@@ -33,8 +33,8 @@ export const useGlobalStore = defineStore('global', () => {
     const getArraySelectedHeroes = computed(() => globalArray.HEROES!.filter(hero => hero.selected));
 
     // геттеры для получения объекта локации из массива
-    // Возврат find: Метод .find() возвращает элемент (IShelter) или undefined (если ничего не найдено или массив null). Поэтому тип getObjMap будет IShelter | undefined.
-    const getObjMap = computed(() => globalArray.SHELTERS?.find(el => el.selected));
+    // Возврат find: Метод .find() возвращает элемент (IShelter) или undefined (если ничего не найдено или массив null). Поэтому тип getDataSelectedShelter будет IShelter | undefined.
+    const getDataSelectedShelter = computed(() => globalArray.SHELTERS?.find(el => el.selected));
 
     //геттер для получения даты 
     const getDate = computed(() => globalArray.DATE);
@@ -142,7 +142,7 @@ export const useGlobalStore = defineStore('global', () => {
         getArraySelectedHeroes,
         getCounters,
 
-        getObjMap,
+        getDataSelectedShelter,
         getDate,
         getWeather,
 
