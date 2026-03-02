@@ -1,13 +1,14 @@
 <script setup lang="ts">
 
+import { navInventar } from '@/constants/global-constants'
 import { ref } from 'vue'
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia'
 
-import TheHeader from '@/components/TheHeader.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 // при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалbном хранилище из localstorage или с default БД
-import { useGlobalStore } from '@/stores/globalStore';
+import { useGlobalStore } from '@/stores/globalStore'
 const { loadData } = useGlobalStore();
 loadData();
 
@@ -16,15 +17,8 @@ const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 const actIdx = ref<number>(0)
 
-const navInventar = [
-    { text: "Всё" },
-    { text: "Оружиие" },
-    { text: "Медицина" },
-    { text: "Одежда" }
-]
-
 const setActItem = (idx: number): void => {
-    actIdx.value = idx
+    actIdx.value = idx;
 };
 
 </script>

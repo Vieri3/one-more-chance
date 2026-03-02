@@ -24,7 +24,7 @@ const loadGame = localStorage.getItem('one-more-chance');
 // начало новой игры
 const goToNewGame = () => loadGame ? isModalNewGame.value = true : router.push('/choice-of-heroes');
 
-// начинаем игру поновой стирая сохранения предыдущей
+// начинаем игру по новой стирая сохранения предыдущей
 const goToAgainGame = (): void => {
     isModalNewGame.value = false;
     localStorage.removeItem('one-more-chance');

@@ -18,7 +18,15 @@ const { lenArrayHeroesIdSelected, getArrayHeroes, getArraySelectedHeroes } = sto
 const { selectedItem, selectedHerosReset, loadData } = globalStore;
 
 // Метод добавления 
-const addNewItem = (event: any) => selectedItem(event.target.id);
+const addNewItem = (event: Event): void => {
+    const target = event.target as HTMLElement;
+    // Проверяем, что target действительно HTMLElement и имеет id
+    if (target && target.id) {
+        selectedItem(parseInt(target.id));
+    } else {
+        console.warn('Event target has no id');
+    }
+}
 
 const goToGamePage = () => router.replace('/location');
 

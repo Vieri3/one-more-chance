@@ -6,7 +6,7 @@ const props = defineProps({
     LDN: Boolean
 })
 
-const loadingDayNight = ref(false);
+const loadingDayNight = ref<boolean>(false);
 
 function doubleToggle() {
     loadingDayNight.value = !loadingDayNight.value;

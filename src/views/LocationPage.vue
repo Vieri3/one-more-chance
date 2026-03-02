@@ -24,7 +24,9 @@ const triggerRandomEvents = ref<boolean>(false);
 const triggerLoadingDayNigh = ref<boolean>(false);
 const idHeroInGroop = ref<number>(0);
 
-const getIdHero = (id: number): number => idHeroInGroop.value = id;
+const getIdHero = (id: number): void => {
+    idHeroInGroop.value = id;
+};
 
 </script>
 

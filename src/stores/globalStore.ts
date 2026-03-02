@@ -67,7 +67,7 @@ export const useGlobalStore = defineStore('global', () => {
 
     // и меняем SELECTED флаг
     // и добавляем в ref id 
-    function selectedItem(callback: number) {
+    function selectedItem(callback: number): void {
         getArrayHeroesIdSelected.value.push(callback);
         const hero = globalArray.HEROES.find(h => h.id == callback);
         if(hero) hero.selected = true;
