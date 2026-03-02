@@ -1,15 +1,18 @@
 <script setup lang="ts">
 
-import { computed } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore';
-import { storeToRefs } from 'pinia';
+import { computed } from 'vue'
+import { useGlobalStore } from '@/stores/globalStore'
+import { storeToRefs } from 'pinia'
+import type { IDataHeroesItem } from '@/types/global-types'
 
 const globalStore = useGlobalStore();
 const { getArrayHeroes } = storeToRefs(globalStore);
 
 const props = defineProps(['idHero']);
 
-const getDataHero = computed(() => getArrayHeroes.value.find((obj: any) => obj.id == props.idHero))
+const getDataHero = computed<IDataHeroesItem | null>(() => {
+    return getArrayHeroes.value.find((obj) => obj.id == props.idHero) ?? null
+})
 
 </script>
 

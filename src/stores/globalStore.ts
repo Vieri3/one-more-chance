@@ -1,8 +1,8 @@
-import type { ILoadData } from '@/types/global-types'
+import type { ILoadData, IGetDate, IGetWeather, IGetCounters, IDataHeroesItem, IDataSheltersItem } from '@/types/global-types'
 import { dataDate, dataCounters, dataWeather } from '@/constants/global-constants'
-import { DATA_HEROES } from "@/data/data-heroes.ts";
-import { DATA_SHELTERS } from "@/data/data-shelters.ts";
-import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts";
+import { DATA_HEROES } from "@/data/data-heroes.ts"
+import { DATA_SHELTERS } from "@/data/data-shelters.ts"
+import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts"
 
 import { defineStore } from "pinia";
 import { reactive, ref, computed } from "vue";
@@ -22,28 +22,25 @@ export const useGlobalStore = defineStore('global', () => {
     const getArrayHeroesIdSelected = ref<number[]>([]);
 
     // геттеры для получения массива героев
-    const getArrayHeroes = computed(() => globalArray.HEROES);
+    const getArrayHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES);
 
     // геттеры для получения длины массива ID героев
-    const lenArrayHeroesIdSelected = computed(() => getArrayHeroesIdSelected.value.length);
+    const lenArrayHeroesIdSelected = computed<number>(() => getArrayHeroesIdSelected.value.length);
 
     // геттеры для получения героев имеющих флаг True (выбранных героев)
-    // globalArray.HEROES?.filter(...): Знак вопроса перед точкой (?.) говорит TypeScript: "Если HEROES существует, вызови filter, если там null или undefined, верни undefined и не падай с ошибкой".
-    // ?? [] (для героев): Оператор ?? возвращает правую часть, если слева null или undefined. Это гарантирует, что геттер всегда возвращает массив, даже если данные еще не загружены. Это полезно, чтобы не ломать v-for в шаблоне.
-    const getArraySelectedHeroes = computed(() => globalArray.HEROES!.filter(hero => hero.selected));
+    const getArraySelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES.filter(hero => hero.selected));
 
     // геттеры для получения объекта локации из массива
-    // Возврат find: Метод .find() возвращает элемент (IShelter) или undefined (если ничего не найдено или массив null). Поэтому тип getDataSelectedShelter будет IShelter | undefined.
-    const getDataSelectedShelter = computed(() => globalArray.SHELTERS?.find(el => el.selected));
+    const getDataSelectedShelter = computed<IDataSheltersItem | undefined>(() => globalArray.SHELTERS.find(el => el.selected));
 
     //геттер для получения даты 
-    const getDate = computed(() => globalArray.DATE);
+    const getDate = computed<IGetDate>(() => globalArray.DATE);
 
     // геттер для получения погоды
-    const getWeather = computed(() => globalArray.WEATHER);
+    const getWeather = computed<IGetWeather>(() => globalArray.WEATHER);
 
     // геттер для получения счетчиков
-    const getCounters = computed(() => globalArray.COUNTERS);
+    const getCounters = computed<IGetCounters>(() => globalArray.COUNTERS);
 
     // Методы
     function loadData() {
