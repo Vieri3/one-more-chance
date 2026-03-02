@@ -10,7 +10,6 @@ export interface ILoadData {
 }
 
 // data types
-
 export interface IDataHeroesItem {
     id: number;
     name: string;
@@ -60,22 +59,40 @@ export interface IDataSheltersItem {
     capacityInv: number
 };
 
-export interface IDataStuffItem {
+// data types inventory
+interface IDataInventoryBase {
     id: number;
     category: string;
     name: string;
     src: string;
+};
+
+interface IDataInventoryClothes extends IDataInventoryBase {
     attack: number;
     protection: number;
-    health: number;
     warming: number;
-    satietiFood: number,                
-    satietiWater: number, 
 };
+
+interface IDataInventoryWeapon extends IDataInventoryBase {
+    attack: number;
+    protection: number;
+};
+
+interface IDataInventoryMedical extends IDataInventoryBase {
+    attack: number,
+    health: number;
+};
+
+interface IDataInventoryEat extends IDataInventoryBase {
+    health: number;
+    satietiFood: number,
+    satietiWater: number,
+};
+
+export type IDataInventoryItem = IDataInventoryClothes | IDataInventoryWeapon | IDataInventoryMedical | IDataInventoryEat;
 
 
 // global functions types
-
 export interface IGetDate {
     date: number,
     month: number,
@@ -89,5 +106,5 @@ export interface IGetWeather {
 
 export interface IGetCounters {
     countRandomEvents: number;
-    countPatrolling: number; 
+    countPatrolling: number;
 }
