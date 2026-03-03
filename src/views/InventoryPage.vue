@@ -17,19 +17,22 @@ const globalStore = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
 // какой элемент навигации активный
 const actIdx = ref<number>(0)
-// 
-const actObjFromInv = ref<string>("head-cap-white-blue")
+// реактивное использование имя-код из инвентаря 
+const actObjFromInv = ref<string>('')
 
-const setActItem = (idx: number): void => {
-    actIdx.value = idx;
-};
+// const setActItem = (idx: number): void => {
+//     actIdx.value = idx;
+// };
+
+// const getCodeNameObj = (nameCode: string): void => {
+//     actObjFromInv.value = nameCode;
+// };
+
+// "head-cap-white-blue"
 
 const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
-    return dataInventory.find((obj) => obj.src == "head-cap-white-blue") ?? null
+    return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
 })
-
-console.log(getDataObjFromInv.value);
-
 
 </script>
  
@@ -45,7 +48,7 @@ console.log(getDataObjFromInv.value);
                     <ul
                         class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
                         <li
-                            @click="setActItem(idx)"
+                            @click="actIdx = idx"
                             :class="{ 'active': idx == actIdx }"
                             v-for="(item, idx) in navInventar"
                             :key="idx"
@@ -63,6 +66,7 @@ console.log(getDataObjFromInv.value);
                             class="p-2"
                             :src="'/inventory/' + getDataSelectedShelter?.inventory[idx - 1] + '.png'"
                             alt="..."
+                            @click="actObjFromInv = getDataSelectedShelter!.inventory[idx - 1]"
                         >
                     </div>
                 </div>
