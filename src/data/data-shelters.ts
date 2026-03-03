@@ -72,7 +72,7 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: true,
         coord: 236,
         inventory: ["medical-bag", "head-winter-blue", "weapon-machete"],
-        capacityInv: 27
+        capacityInv: 9
     },
     {
         id: 5,

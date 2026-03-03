@@ -9,13 +9,13 @@ export const enum EDataRandomEventsPosition {
     INVENTORY = 'inventory',
     PEOPLE = 'people',
     FARM = 'farm'
-}
+};
 // меню навигации инвентаря
 export const navInventar = [
     { text: "Всё" },
     { text: "Оружиие" },
     { text: "Медицина" },
-    { text: "Одежда" }
+    { text: "Одежда" } 
 ];
 // массив страниц / вкладок в игре
 export const MASS_PAGE = [
