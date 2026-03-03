@@ -64,6 +64,7 @@ interface IDataInventoryBase {
     id: number;
     category: string;
     name: string;
+    description: string;
     src: string;
 };
 

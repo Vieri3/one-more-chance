@@ -1,7 +1,9 @@
 <script setup lang="ts">
 
+import type { IDataInventoryItem } from '@/types/global-types'
 import { navInventar } from '@/constants/global-constants'
-import { ref } from 'vue'
+import { dataInventory } from '@/data/data-inventory'
+import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useGlobalStore } from '@/stores/globalStore'
 
@@ -13,46 +15,74 @@ loadData()
 
 const globalStore = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
-
+// какой элемент навигации активный
 const actIdx = ref<number>(0)
+// 
+const actObjFromInv = ref<string>("head-cap-white-blue")
 
 const setActItem = (idx: number): void => {
     actIdx.value = idx;
 };
 
-</script>
+const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
+    return dataInventory.find((obj) => obj.src == "head-cap-white-blue") ?? null
+})
 
+console.log(getDataObjFromInv.value);
+
+
+</script>
+ 
 <template>
     <TheHeader />
 
-    <main class="w-200 h-150 mx-auto border border-amber-900 bg-image" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgInv + '.png'})` }">
+    <main class="w-200 h-150 mx-auto flex border border-amber-900">
         <!--инвентарь-->
-        <section class="w-180 bg-gray-700/50 main-font mt-2 mx-auto rounded">
-            <nav class="">
-                <ul
-                    class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
-                    <li
-                        @click="setActItem(idx)"
-                        :class="{ 'active': idx == actIdx }"
-                        v-for="(item, idx) in navInventar"
-                        :key="idx"
-                    >
-                        {{ item.text }}
-                    </li>
-                </ul>
-            </nav>
-            <div
-                class="grid grid-cols-9 justify-items-center items-center border-2 border-t-0 pt-2 border-white  *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded *:mb-2">
-                <div v-for="idx in getDataSelectedShelter?.capacityInv">
-                    <img
-                        v-if="idx <= Object.keys(getDataSelectedShelter!.inventory).length"
-                        class="p-2"
-                        :src="'/inventory/' + getDataSelectedShelter?.inventory[idx - 1] + '.png'"
-                        alt="..."
-                    >
+        <article class="bg-image w-150" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgInv + '.png'})` }">
+            <section class="w-130 bg-gray-700/50 main-font mt-2 mx-auto rounded">
+                <!--Навигация инвентаря-->
+                <nav class="">
+                    <ul
+                        class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
+                        <li
+                            @click="setActItem(idx)"
+                            :class="{ 'active': idx == actIdx }"
+                            v-for="(item, idx) in navInventar"
+                            :key="idx"
+                        >
+                            {{ item.text }}
+                        </li>
+                    </ul>
+                </nav>
+                <!--Ячейки инвентаря-->
+                <div
+                    class="grid grid-cols-7 justify-items-center items-center border-2 border-t-0 pt-2 border-white  *:cursor-pointer *:size-16 *:border-2 *:border-white *:bg-gray-700/60 *:rounded *:mb-2">
+                    <div v-for="idx in getDataSelectedShelter?.capacityInv">
+                        <img
+                            v-if="idx <= Object.keys(getDataSelectedShelter!.inventory).length"
+                            class="p-2"
+                            :src="'/inventory/' + getDataSelectedShelter?.inventory[idx - 1] + '.png'"
+                            alt="..."
+                        >
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </article>
+
+        <!--боковая панель действий связанных с инвентаремм-->
+        <aside class="w-50 p-2 border border-amber-900">
+
+                <h3 class="text-center text-amber-500 mb-2">{{ getDataObjFromInv?.name }}</h3>
+     
+                <img  
+                    class="mx-auto border-2 p-2 rounded-2xl mb-2"
+                    :src="'/inventory/' + getDataObjFromInv?.src + '.png'"
+                    :alt="getDataObjFromInv?.name"
+                />
+        
+                <p class="whitespace-normal break-words">{{ getDataObjFromInv?.description }}</p>
+    
+        </aside>
 
     </main>
 
