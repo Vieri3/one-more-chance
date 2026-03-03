@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { useGlobalStore } from '@/stores/globalStore'
 
-import TheHeader from '@/components/TheHeader.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+
+const { loadData } = useGlobalStore();
+loadData();
 
 </script>
 

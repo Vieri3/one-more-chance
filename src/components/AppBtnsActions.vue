@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 const emits = defineEmits(['triggerRE', 'triggerLDN']);
 
 const globalStore = useGlobalStore();
-const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveGame, getPowerModeStore } = useGlobalStore();
+const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveData, getPowerModeStore } = useGlobalStore();
 const { getCounters } = storeToRefs(globalStore);
 
 const getRandomEvents = async (): Promise<void> => {
@@ -22,7 +22,7 @@ const getRandomEvents = async (): Promise<void> => {
     });
     // функция сохранения игры 
     await new Promise<void>((resolve) => {
-        saveGame();
+        saveData();
         resolve()
     });
 }
@@ -33,29 +33,36 @@ const getNextDay = async (): Promise<void> => {
         emits('triggerLDN');
         resolve()
     });
-
     // меняем дату
     await new Promise<void>((resolve) => {
         getCalendarStore();
         resolve()
     });
-
     // меняем погоду
     await new Promise<void>((resolve) => {
         getWeatherStore();
         resolve()
     });
-
     // сбрасываем очки случайных событий и патрулирования
-    resetCountREandP();
+    await new Promise<void>((resolve) => {
+        resetCountREandP();
+        resolve()
+    });
     // производим снятие характеристик по еде и воде у героев
-    getPowerModeStore();
-    saveGame();
+    await new Promise<void>((resolve) => {
+        getPowerModeStore();
+        resolve()
+    });
+    // сохраняем
+    await new Promise<void>((resolve) => {
+        saveData();
+        resolve()
+    });
 }
 
 const getPatrolling = () => {
     stepCountPatrolling();
-    saveGame();
+    saveData();
 }
 
 </script>

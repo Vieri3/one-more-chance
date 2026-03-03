@@ -1,19 +1,7 @@
 <script setup lang="ts">
 
-import AppMenu from '@/components/AppMenu.vue';
-
-import { useGlobalStore } from '@/stores/globalStore';
-
-// при переходе на страницу сохранять в localstorage потому что считывает с хранилища localstorage;
-const { saveGame } = useGlobalStore();
-
-const massPage = [
-    { text: "Склад", href: "/inventory" },
-    { text: "Ферма", href: "/farm" },
-    { text: "Группа", href: "/groop" },
-    { text: "Локация", href: "/location" },
-    { text: "Карта", href: "/map" },
-];
+import { MASS_PAGE } from '@/constants/global-constants'
+import AppMenu from '@/components/AppMenu.vue'
 
 </script>
  
@@ -22,9 +10,8 @@ const massPage = [
         <nav class="w-150">
             <ul class="*:cursor-pointer flex justify-around">
                 <li
-                    v-for="page in massPage"
+                    v-for="page in MASS_PAGE"
                     class="hover:text-amber-500"
-                    @click="saveGame()"
                 >
                     <router-link :to="page.href">{{ page.text }}</router-link>
                 </li>

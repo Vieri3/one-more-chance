@@ -2,24 +2,23 @@
 
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useGlobalStore } from '@/stores/globalStore.ts';
 
-const { loadData } = useGlobalStore();
 // функция при загрузке страницы меняет картинки background
 onMounted(() => {
     const RAND_NUM = Math.floor(Math.random() * 5);
     const bgElement = document.querySelector<HTMLElement>('.start-bg');
     if (bgElement) bgElement.style.backgroundImage = `url('/home-page/start-bg-${RAND_NUM}.png')`;
-    loadData();
 });
-
+// Используем для перехода на другие страницы в js
 const router = useRouter();
 
+// Флаги модальных окон
 const isModalSettingOpen = ref<boolean>(false);
 const isModalAboutOpen = ref<boolean>(false);
 const isModalNewGame = ref<boolean>(false);
 
-const loadGame = localStorage.getItem('one-more-chance');
+// есть ли сохранка в localstorage 
+const loadGame: string | null = localStorage.getItem('one-more-chance');
 
 // начало новой игры
 const goToNewGame = () => loadGame ? isModalNewGame.value = true : router.push('/choice-of-heroes');
@@ -30,7 +29,7 @@ const goToAgainGame = (): void => {
     localStorage.removeItem('one-more-chance');
     router.push('/choice-of-heroes');
 }
-
+// Продолжение игры
 const goToGamePage = () => router.replace('/location');
 
 </script>
@@ -102,7 +101,7 @@ const goToGamePage = () => router.replace('/location');
         </div>
     </div>
 
-    <!--модальное окно когда есть позиция в меню продолжение-->
+    <!--модальное окно когда есть позиция в меню продолжение, но ты жмешь НОВАЯ ИГРА-->
     <div
         v-if="isModalNewGame"
         class="w-full h-full bg-black/30 backdrop-blur-md flex items-center justify-center z-10 fixed top-0 left-0"

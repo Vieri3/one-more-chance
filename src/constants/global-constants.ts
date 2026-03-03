@@ -16,4 +16,12 @@ export const navInventar = [
     { text: "Оружиие" },
     { text: "Медицина" },
     { text: "Одежда" }
-]
+];
+// массив страниц / вкладок в игре
+export const MASS_PAGE = [
+    { text: "Склад", href: "/inventory" },
+    { text: "Ферма", href: "/farm" },
+    { text: "Группа", href: "/groop" },
+    { text: "Локация", href: "/location" },
+    { text: "Карта", href: "/map" },
+];

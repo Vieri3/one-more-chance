@@ -1,11 +1,16 @@
 <script setup lang="ts">
 // импортируем по дефолту функцию 
-import { useGlobalStore } from '@/stores/globalStore';
+import { useGlobalStore } from '@/stores/globalStore'
 //storeToRefs — функция библиотеки Pinia для управления состоянием в Vue.js, 
 //которая позволяет корректно извлекать реактивные свойства состояния (state)
 // и геттеров (getters) без потери реактивности. 
-import { storeToRefs } from 'pinia';
-import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+
+// подгружаем данные в реактивное хранилище из обычных data-... ts
+const { loadData, saveData } = useGlobalStore();
+loadData();
+
 const router = useRouter();
 
 // присваиваем переменной массив из глобального хранилища Героев
@@ -15,7 +20,7 @@ const globalStore = useGlobalStore();
 const { lenArrayHeroesIdSelected, getArrayHeroes, getArraySelectedHeroes } = storeToRefs(globalStore);
 
 // напрямую из хранилища
-const { selectedItem, selectedHerosReset, loadData } = globalStore;
+const { selectedItem, selectedHerosReset } = globalStore;
 
 // Метод добавления 
 const addNewItem = (event: Event): void => {
@@ -28,9 +33,11 @@ const addNewItem = (event: Event): void => {
     }
 }
 
-const goToGamePage = () => router.replace('/location');
-
-loadData()
+// сохраняем то что навыбирали и переходим в игру
+const goToGamePage = ():void => {
+    saveData();
+    router.replace('/location');
+}
 
 </script>
 

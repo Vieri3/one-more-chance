@@ -3,14 +3,13 @@
 import { navInventar } from '@/constants/global-constants'
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useGlobalStore } from '@/stores/globalStore'
 
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
-// при загрузке или перезагрузке страницы должен загрузиться реактивный мaссив в глобалbном хранилище из localstorage или с default БД
-import { useGlobalStore } from '@/stores/globalStore'
 const { loadData } = useGlobalStore();
-loadData();
+loadData()
 
 const globalStore = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);

@@ -19,21 +19,16 @@ const routes = [
     { path: '/map', component: MapPage, meta: { title: 'Карта' } },
     { path: '/:pathMatch(.*)*', redirect: '/404' },
     { path: '/404', component: NotFound, name: 'NotFound', meta: { title: '404' } }
-]
-
+];
 
 const router = createRouter({
     history: createWebHistory(/*(import.meta.env.BASE_URL)*/),
-    routes,
-    // scrollBehavior() {
-    //     document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-    // }
-})
+    routes
+});
 
-router.beforeEach((to, from,  next) => {
+router.beforeEach((to, from, next) => {
     document.title = (to.meta.title as string) || "One More Chance";
     next();
-})
-
+});
 
 export default router

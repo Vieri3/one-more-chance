@@ -65,6 +65,11 @@ export const useGlobalStore = defineStore('global', () => {
         }
     }
 
+    // функция сохранения игры
+    function saveData() {
+        localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
+    }
+
     // и меняем SELECTED флаг
     // и добавляем в ref id 
     function selectedItem(callback: number): void {
@@ -89,8 +94,8 @@ export const useGlobalStore = defineStore('global', () => {
     }
     // после прошедшего дня счетчики обнуляются
     const resetCountREandP = () => {
-        globalArray.COUNTERS!.countRandomEvents = 3;
-        globalArray.COUNTERS!.countPatrolling = 2;
+        globalArray.COUNTERS!.countRandomEvents = dataCounters.countRandomEvents;
+        globalArray.COUNTERS!.countPatrolling = dataCounters.countPatrolling;
     }
     // функция по клику производит кормежку группы 
     const getPowerModeStore = () => {
@@ -123,10 +128,6 @@ export const useGlobalStore = defineStore('global', () => {
         // записываем температуру в глобальный массив
         globalArray.WEATHER = weatherNow
     }
-    // функция сохранения игры
-    function saveGame() {
-        localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
-    }
 
     return {
 
@@ -154,7 +155,7 @@ export const useGlobalStore = defineStore('global', () => {
         // goInLocation,
         getCalendarStore,
         getWeatherStore,
-        saveGame,
+        saveData,
         loadData,
 
     }

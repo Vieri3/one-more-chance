@@ -7,18 +7,15 @@ import AppDayNightScreen from '@/components/AppDayNightScreen.vue';
 import AppWindowHeroHaracteristics from '@/components/AppWindowHeroHaracteristics.vue';
 import TheFooter from '@/components/TheFooter.vue';
 
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useGlobalStore } from '@/stores/globalStore';
 import { storeToRefs } from 'pinia';
 
+const { loadData } = useGlobalStore();
+loadData();
+
 const globalStore = useGlobalStore();
 const { getArraySelectedHeroes, getDataSelectedShelter } = storeToRefs(globalStore);
-const { loadData, saveGame } = useGlobalStore();
-
-// при загрузке или перезагрузке страницы должен загрузиться реактивный мссив в глобалном хранилище из localstorage или с default БД
-loadData();
-// при первом заходе страховочное сохранение. 
-onMounted(() => saveGame())
 
 const triggerRandomEvents = ref<boolean>(false);
 const triggerLoadingDayNigh = ref<boolean>(false);

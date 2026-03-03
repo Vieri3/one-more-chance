@@ -4,16 +4,16 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useGlobalStore } from '@/stores/globalStore';
 
-const { saveGame } = useGlobalStore();
+const { saveData } = useGlobalStore();
 
 const router = useRouter();
 const goToHomePage = () => router.replace('/');
 
-const isModalSaveGame = ref<boolean>(false);
+const isModalsaveData = ref<boolean>(false);
 
 const saveCurrentProgress = () => {
-    isModalSaveGame.value = !isModalSaveGame.value
-    saveGame()
+    isModalsaveData.value = !isModalsaveData.value
+    saveData()
 };
 
 </script>
@@ -33,13 +33,13 @@ const saveCurrentProgress = () => {
     </div>
 
     <div
-        v-if="isModalSaveGame"
+        v-if="isModalsaveData"
         class="w-full h-full bg-black/30 backdrop-blur-md flex items-center justify-center z-10 fixed top-0 left-0"
     >
         <div class="bg-white/80 border-2 rounded border-amber-500 p-4 flex items-center justify-center flex-col">
             <h2 class="text-xl text-black">Вы только что сохранили прогресс в игре!!!</h2>
             <button
-            @click="isModalSaveGame = !isModalSaveGame"
+            @click="isModalsaveData = !isModalsaveData"
             class="border-2 border-red-500 p-2 m-5 bg-black rounded cursor-pointer animate-bounce"
         >жми для продолжения</button>
     </div>
