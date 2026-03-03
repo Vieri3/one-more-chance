@@ -2,18 +2,31 @@ import type { IDataSheltersItem } from '@/types/global-types'
 
 export const DATA_SHELTERS: IDataSheltersItem[] = [
     {
+        // Id убежища
         id: 1,
+        // папка картинок в проекте
         folder: "",
+        // название убежища
         name: "Prison",
+        // миниатюра убежища (картинка общего вида) 
         imgThumb: "prison",
+        // основная картинка, как выглядит внутри убежище
         imgMain: "",
+        // как выглядит место склада
         imgInv: "",
+        // как выглядит место фермы
         imgFarm: "",
+        // как выглядит страница где таблица группы
         imgGroop: "",
+        // флаг для выбора/показа на основной карте
         selected: false,
+        // флаг в котором мы находимся убежище
         active: false,
+        // координаты на карте для рисования точек
         coord: 234,
+        // стартовый инвентарь, что находится на базе
         inventory: [],
+        // вместимость инвентаря базы
         capacityInv: 10
     },
     {
@@ -48,17 +61,17 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
     },
     {
         id: 4,
-        folder: "bus",  /* название папки где хранятся картинки  */
-        name: "BuS prison", /* название убежища  */
-        imgThumb: "bus-thumb", /* миниатюра убежища (картинка общего вида) */
-        imgMain: "bus-img", /* картинка, как выглядит внутри */
-        imgInv: "bus-inventory", /* как выглядит место склада */
-        imgFarm: "bus-farm", /* как выглядит место фермы */
-        imgGroop: "bus-groop", /* как выглядит фон окна группы персонажей */
-        selected: true, /* флаг для выбора на карте */
-        active: true,   /* флаг если мы находимяся в эом убежище */
+        folder: "bus",
+        name: "BuS prison",
+        imgThumb: "bus-thumb",
+        imgMain: "bus-img",
+        imgInv: "bus-inventory",
+        imgFarm: "bus-farm",
+        imgGroop: "bus-groop",
+        selected: true,
+        active: true,
         coord: 236,
-        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"], /*массив СКЛАД какой товар лежит и массив ферма что растет на этой точке*/ 
+        inventory: ["medical-bag", "head-winter-blue", "weapon-machete"],
         capacityInv: 27
     },
     {

@@ -2,26 +2,46 @@ import type { IDataHeroesItem } from '@/types/global-types';
 
 export const DATA_HEROES: IDataHeroesItem[] = [
     {
-        id: 1,                  /* ID героя */
-        name: "Banchini",       /* имя героя */
-        male: "woman",          /* пол героя */
-        year: 45,               /* возраст героя */
-        ethnicity: "Cuban-American", /* национальность героя */
-        imgThumb: "banchini",   /* картинка карточка героя */
-        selected: false,        /* флаг выбран ли герой в группу */
-        status: "alive",        /* статус героя жив, мертв, болен и т.д. */
-        desc: "Банчина была очень доброй женщиной и искренне заботилась о муже и сыне. Она любила своего мужа Ясоппа и ждала его возвращения домой. Она не дождалась того дня, когда Ясопп вернулся домой, вместе с ее сыном Усоппом. Возможно они живы или превратились в ходячих.", /* краткое описание героя */
-        inventory: ["head-cap-NY", "body-red-blouse", "weapon-machete"],    /* инвентарь героя */
-        health: 100,     /* здоровбе героя  */
-        attack: 5,      /* чистый урон героя */
-        protection: 3,  /* чистая защита героя */
-        satietiFood: 45,   /* насколько сывт герой */
-        satietiWater: 45,  /* насколько герой утален от жажды */
+        // ID героя 
+        id: 1,   
+        // имя героя            
+        name: "Banchini",   
+        // пол героя  
+        male: "woman",  
+        // возраст героя       
+        year: 45,  
+        // национальность героя             
+        ethnicity: "Cuban-American", 
+        // картинка карточка героя 
+        imgThumb: "banchini",  
+        // флаг выбран ли герой в группу  
+        selected: false,   
+        // статус героя жив, мертв, болен и т.д.      
+        status: "alive",      
+        // краткое описание героя  
+        desc: "Банчина была очень доброй женщиной и искренне заботилась о муже и сыне. Она любила своего мужа Ясоппа и ждала его возвращения домой. Она не дождалась того дня, когда Ясопп вернулся домой, вместе с ее сыном Усоппом. Возможно они живы или превратились в ходячих.", 
+        // инвентарь героя 
+        inventory: ["head-cap-NY", "body-red-blouse", "weapon-machete"], 
+        // здоровье героя 
+        health: 100,
+        // чистый урон героя     
+        attack: 5, 
+        // чистая защита героя   
+        protection: 3, 
+        // насколько сывт герой 
+        satietiFood: 45, 
+        // насколько герой утален от жажды 
+        satietiWater: 45,  
+        // одежда героя
         equipment: {
-            head: "head-cap-NY", // Головной убор                     
-            body: "body-red-blouse", // тело    
-            legs: "legs-blue-jeans", // штаны.,     
-            foot: "foot-slates-yellow-green", // обувь               
+            // головной убор
+            head: "head-cap-NY",   
+            // тело   
+            body: "body-red-blouse", 
+            // ного
+            legs: "legs-blue-jeans",  
+            // ступни 
+            foot: "foot-slates-yellow-green",               
         }
     },
     {

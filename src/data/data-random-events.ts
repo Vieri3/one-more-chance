@@ -1,4 +1,4 @@
-import type { IDataRandomEventsItem } from '@/types/global-types';
+import type { IDataRandomEventsItem } from '@/types/global-types'
 import { EDataRandomEventsPosition } from '@/constants/global-constants'
 
 export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
@@ -9,10 +9,13 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         name: "Заплутавшая белка", 
         // с кем будет происходить с людьми, базой, складом 
         position: EDataRandomEventsPosition.INVENTORY,  
-        description: "Случайная белка попала в капкан, увесистая, килограмм так на 8. Ужин на 2 человека точно", /* описание */
-        action: true, /* true - добавляем, false - отнимаем:) */       
+        // описание события
+        description: "Случайная белка попала в капкан, увесистая, килограмм так на 8. Ужин на 2 человека точно",
+        // true - добавляем, false - отнимаем:)  
+        action: true, 
+        // то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает )    
         eventBody: "eat-bacon",
-        /* то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает ) */
+        
     },
     {
         id: 2,
