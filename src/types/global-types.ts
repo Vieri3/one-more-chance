@@ -1,4 +1,4 @@
-import { EDataRandomEventsPosition } from '@/constants/global-constants'
+import { EDataRandomEventsPosition, EDataCategoriesFromInventar } from '@/constants/global-constants'
 
 // global mass games
 export interface ILoadData {
@@ -62,29 +62,33 @@ export interface IDataSheltersItem {
 // data types inventory
 interface IDataInventoryBase {
     id: number;
-    category: string;
+    category: EDataCategoriesFromInventar.CLOTHES | EDataCategoriesFromInventar.WEAPON | EDataCategoriesFromInventar.MEDICAL | EDataCategoriesFromInventar.EAT;
     name: string;
     description: string;
     src: string;
 };
 
 interface IDataInventoryClothes extends IDataInventoryBase {
+    category: EDataCategoriesFromInventar.CLOTHES 
     attack: number;
     protection: number;
     warming: number;
 };
 
 interface IDataInventoryWeapon extends IDataInventoryBase {
+    category: EDataCategoriesFromInventar.WEAPON 
     attack: number;
     protection: number;
 };
 
 interface IDataInventoryMedical extends IDataInventoryBase {
+    category: EDataCategoriesFromInventar.MEDICAL 
     attack: number,
     health: number;
 };
 
 interface IDataInventoryEat extends IDataInventoryBase {
+    category: EDataCategoriesFromInventar.EAT 
     health: number;
     satietiFood: number,
     satietiWater: number,

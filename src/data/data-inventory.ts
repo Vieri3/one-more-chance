@@ -1,11 +1,12 @@
 import type { IDataInventoryItem } from '@/types/global-types'
+import { EDataCategoriesFromInventar } from '@/constants/global-constants'
 
 export const dataInventory: IDataInventoryItem[] = [
     {
         // id 
         id: 1,                          
         // категория к которой относится предмет 
-        category: "clothes",            
+        category: EDataCategoriesFromInventar.CLOTHES,            
         // название выводимое на экране 
         name: "Кепка бело-синяя",
         // описание
@@ -21,7 +22,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 2,
-        category: "weapon",
+        category: EDataCategoriesFromInventar.WEAPON, 
         name: "Мачете",
         description: "",
         src: "weapon-machete",
@@ -32,7 +33,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 3,
-        category: "medical",
+        category: EDataCategoriesFromInventar.MEDICAL, 
         name: "Медицинский чемодан",
         description: "",
         src: "medical-bag",
@@ -43,7 +44,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 4,
-        category: "eat",
+        category: EDataCategoriesFromInventar.EAT, 
         name: "Бекон",
         description: "",
         src: "eat-bacon",
@@ -56,7 +57,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 5,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Свитер с оленями",
         description: "",
         src: "body-reindeer-sweater",
@@ -66,7 +67,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 6,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Синие джинсы",
         description: "",
         src: "legs-blue-jeans",
@@ -76,7 +77,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 7,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Сланцы зелено-желтые",
         description: "",
         src: "foot-slates-yellow-green",
@@ -86,7 +87,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 8,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Ботинки кожанные меховые",
         description: "",
         src: "foot-leather-and-fur-boots",
@@ -96,7 +97,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 9,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Кепка NY",
         description: "",
         src: "head-cap-NY",
@@ -106,7 +107,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 10,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Зимняя шапка синяя",
         description: "",
         src: "head-winter-blue",
@@ -116,7 +117,7 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 11,
-        category: "clothes",
+        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Красная кофта",
         description: "",
         src: "body-red-blouse",

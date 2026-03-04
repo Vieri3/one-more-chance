@@ -135,3 +135,9 @@ export function getCalendarFn(date: number, month: number, year: number): IGetDa
     }
     return { date, month, year };
 }
+
+// удалить из массива по названию
+export function deleteFromArrayOnName(name: string, mass: string[]){
+    let index = mass.indexOf(name);
+    if (index !== -1) mass.splice(index, 1); 
+}

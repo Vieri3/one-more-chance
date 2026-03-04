@@ -30,7 +30,7 @@ export const useGlobalStore = defineStore('global', () => {
     // геттеры для получения героев имеющих флаг True (выбранных героев)
     const getArraySelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES.filter(hero => hero.selected));
 
-    // геттеры для получения объекта локации из массива
+    // геттеры для получения убежища имеющих флаг (selected: true)
     const getDataSelectedShelter = computed<IDataSheltersItem | undefined>(() => globalArray.SHELTERS.find(el => el.selected));
 
     //геттер для получения даты 
@@ -66,12 +66,8 @@ export const useGlobalStore = defineStore('global', () => {
     }
 
     // функция сохранения игры
-    function saveData() {
-        localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
-    }
-
-    // и меняем SELECTED флаг
-    // и добавляем в ref id 
+    const saveData = () => localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
+    // функция когда выбираем героя на старте игры то меняем ему флаг и выбранный герой  подсвечивается
     function selectedItem(callback: number): void {
         getArrayHeroesIdSelected.value.push(callback);
         const hero = globalArray.HEROES.find(h => h.id == callback);

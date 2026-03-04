@@ -25,3 +25,10 @@ export const MASS_PAGE = [
     { text: "Локация", href: "/location" },
     { text: "Карта", href: "/map" },
 ];
+export const enum EDataCategoriesFromInventar{
+    CLOTHES = 'clothes',
+    WEAPON = 'weapon',
+    MEDICAL = 'medical',
+    EAT = 'eat',
+    WATER = 'water'
+}
