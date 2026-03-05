@@ -1,18 +1,16 @@
 import type { IDataInventoryItem } from '@/types/global-types'
-import { EDataCategoriesFromInventar } from '@/constants/global-constants'
+import { EDataItemsInTheGame } from '@/constants/global-constants'
 
 export const dataInventory: IDataInventoryItem[] = [
     {
         // id 
-        id: 1,                          
-        // категория к которой относится предмет 
-        category: EDataCategoriesFromInventar.CLOTHES,            
+        id: 1,                                  
         // название выводимое на экране 
         name: "Кепка бело-синяя",
         // описание
         description: "Белая кепка с синим козырьком! Возможно такие раньше носили бейсболисты! Защита от солнца, и то она очень плотная, скорее от дождя. Также подойдет для тех кто носит длинные волосы. Чтобы Ходячий не смог схватить за волосы.",       
         // нахвание картинки 
-        src: "head-cap-white-blue",     
+        src: EDataItemsInTheGame.CAP_WHITE_BLUE,     
         // характеристика добавляющий к атаке 
         attack: 0,                      
         // характеристика добавляющий к защите 
@@ -22,10 +20,9 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 2,
-        category: EDataCategoriesFromInventar.WEAPON, 
         name: "Мачете",
         description: "Мачете, словно из фильма МАЧЭТЭ. Острый металлический, иногда застряет в черепухе, но оттолкнув тело ногой в грудь, вытаскивается и норм.",
-        src: "weapon-machete",
+        src: EDataItemsInTheGame.MACHETE,
         // характеристика добавляющий к атаке 
         attack: 5,                  
         // характеристика добавляющий к защите
@@ -33,10 +30,9 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 3,
-        category: EDataCategoriesFromInventar.MEDICAL, 
         name: "Медицинский чемодан",
         description: "Медицинский чемоданчик, практически не использован. Стащили видиммо из кареты скорой помощи",
-        src: "medical-bag",
+        src: EDataItemsInTheGame.MEDICAL_BAG,
         // характеристика добавляющий к атаке 
         attack: 5,                  
         // характеристика добавляющий к здоровью 
@@ -44,10 +40,9 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 4,
-        category: EDataCategoriesFromInventar.EAT, 
         name: "Бекон",
         description: "Кусочек мясца!! Довольно таки вкусно, с учётом реалий за окном..",
-        src: "eat-bacon",
+        src: EDataItemsInTheGame.BACON,
         // характеристика добавляющий к здоровью 
         health: 2,                    
         // утoление голода    
@@ -57,72 +52,73 @@ export const dataInventory: IDataInventoryItem[] = [
     },
     {
         id: 5,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Свитер с оленями",
         description: "",
-        src: "body-reindeer-sweater",
+        src: EDataItemsInTheGame.REINDEER_SWEATER,
         attack: 0,
         protection: 2,
         warming: 2
     },
     {
         id: 6,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Синие джинсы",
         description: "",
-        src: "legs-blue-jeans",
+        src: EDataItemsInTheGame.BLUE_JEANS,
         attack: 0,
         protection: 0,
         warming: 2
     },
     {
-        id: 7,
-        category: EDataCategoriesFromInventar.CLOTHES, 
+        id: 7, 
         name: "Сланцы зелено-желтые",
         description: "",
-        src: "foot-slates-yellow-green",
+        src: EDataItemsInTheGame.SLATES_Y_G,
         attack: 0,
         protection: 0,
         warming: 2
     },
     {
         id: 8,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Ботинки кожанные меховые",
         description: "",
-        src: "foot-leather-and-fur-boots",
+        src: EDataItemsInTheGame.LEATHER_AND_FUR_BOOTS,
         attack: 2,
         protection: 2,
         warming: 2
     },
     {
         id: 9,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Кепка NY",
         description: "",
-        src: "head-cap-NY",
+        src: EDataItemsInTheGame.CAP_NY,
         attack: 0,
         protection: 1,
         warming: 2
     },
     {
         id: 10,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Зимняя шапка синяя",
         description: "",
-        src: "head-winter-blue",
+        src: EDataItemsInTheGame.WINTER_BLUE,
         attack: 0,
         protection: 2,
         warming: 2
     },
     {
         id: 11,
-        category: EDataCategoriesFromInventar.CLOTHES, 
         name: "Красная кофта",
         description: "",
-        src: "body-red-blouse",
+        src: EDataItemsInTheGame.RED_BLOUSE,
         attack: 0,
         protection: 2,
         warming: 2
+    },
+    {
+        id: 12,
+        name: "Помповое ружьё",
+        description: "Обычное ружье, не очень скорострельное, но очень надежное, также патроны на каждом углу. Сносит башку на раз-два-три",
+        src: EDataItemsInTheGame.RED_BLOUSE,
+        attack: 50,
+        protection: 3,
     }
 ];

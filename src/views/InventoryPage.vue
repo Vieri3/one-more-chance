@@ -21,17 +21,50 @@ const actIdx = ref<number>(0)
 // реактивное использование имя-код из инвентаря 
 const actObjFromInv = ref<string>('')
 // индекс ячейки для активной рамки
-const actBorderObjFromInv = ref<number | null>(null)
-
+const actBorderObjFromInv = ref<number | null>(null);
+// сортировочный массив инвентаря который будет показывать на экран выбранное из типов
+const getSortDataObjFromInv = ref<string[]>(getDataSelectedShelter.value?.inventory);
+// основной массив инвентаря который выводит его из ДАТА данных но делает его computed полем
 const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
     return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
 })
-// функция показывает сбоку полную инфу об предметеиз инвентаря и красит рамку активного предмета
-function getDataObjFromInvOnAside(num: number): void{
-    actBorderObjFromInv.value = num
-    actObjFromInv.value = getDataSelectedShelter.value!.inventory[num - 1]
-}
 
+console.log(getSortDataObjFromInv.value);
+
+
+// функция перключает вкладки показывает активную вкладку и отображает сортировку по принадлежности
+function checkInv(index: number, name: string): void {
+    actIdx.value = index;
+    // функция принимает значени предмета и отделяет первое слово до симводла - которое показываеткатегорию предмета и сортирует по этому слову
+    function sortInventar(pos: string) {
+        getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory.filter(item => item.substring(0, item.indexOf('-')) == pos)
+    }
+    switch (name) {
+        case EDataCategoriesFromInventar.ALL:
+            getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory
+            break;
+        case EDataCategoriesFromInventar.WEAPON:
+            sortInventar(EDataCategoriesFromInventar.WEAPON)
+            break;
+        case EDataCategoriesFromInventar.CLOTHES:
+            sortInventar(EDataCategoriesFromInventar.CLOTHES)
+            break;
+        case EDataCategoriesFromInventar.EAT:
+            sortInventar(EDataCategoriesFromInventar.EAT)
+            break;
+        case EDataCategoriesFromInventar.MEDICAL:
+            sortInventar(EDataCategoriesFromInventar.MEDICAL)
+            break;
+        default:
+            alert("КУку Ёпта!!!")
+    }
+
+}
+// функция показывает сбоку полную инфу об предмет из инвентаря и красит рамку активного предмета
+function getDataObjFromInvOnAside(num: number): void {
+    actBorderObjFromInv.value = num
+    actObjFromInv.value = getSortDataObjFromInv.value[num - 1]
+}
 // удаляем из массива Геттера инвентаря предмет
 const deleteObjFromInventory = (): void => {
     deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
@@ -51,14 +84,14 @@ const deleteObjFromInventory = (): void => {
         >
             <section class="w-130 bg-gray-700/50 main-font mt-2 mx-auto rounded">
                 <!--Навигация инвентаря-->
-                <nav class="">
+                <nav>
                     <ul
                         class="flex items-center bg-gray-700 border-b-2 rounded-t border-white *:px-5 *:rounded-t-xl *:cursor-pointer *:relative">
                         <li
                             v-for="(item, idx) in navInventar"
                             :key="idx"
                             :class="{ 'active': idx == actIdx }"
-                            @click="actIdx = idx"
+                            @click="checkInv(idx, item.txt_key)"
                         >
                             {{ item.text }}
                         </li>
@@ -74,10 +107,10 @@ const deleteObjFromInventory = (): void => {
                         @click="getDataObjFromInvOnAside(idx)"
                     >
                         <img
-                            v-if="idx <= Object.keys(getDataSelectedShelter!.inventory).length"
+                            v-if="idx <= getSortDataObjFromInv?.length"
                             class="p-2"
-                            :src="'/inventory/' + getDataSelectedShelter?.inventory[idx - 1] + '.png'"
-                            :alt="getDataSelectedShelter?.inventory[idx - 1]"
+                            :src="'/inventory/' + getSortDataObjFromInv[idx - 1] + '.png'"
+                            :alt="getSortDataObjFromInv[idx - 1]"
                         >
                     </div>
                 </div>
@@ -90,40 +123,34 @@ const deleteObjFromInventory = (): void => {
             <div v-if="actObjFromInv !== undefined && actObjFromInv !== ''">
 
                 <h3 class="text-center text-amber-500 mb-2">{{ getDataObjFromInv?.name }}</h3>
-    
+
                 <img
                     class="mx-auto border-2 p-2 rounded-2xl mb-2"
                     :src="'/inventory/' + getDataObjFromInv?.src + '.png'"
                     :alt="getDataObjFromInv?.name"
                 />
-    
+
                 <p class="whitespace-normal overflow-wrap text-xs">{{ getDataObjFromInv?.description }}</p>
-    
-                <hr class="border-t-2 border-amber-600 my-2" >
-    
+
+                <hr class="border-t-2 border-amber-600 my-2">
+
                 <div class="text-sm">
-                    <p v-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.WEAPON">
-                        К атаке: {{ getDataObjFromInv?.attack }}<br/>
-                        К защите: {{ getDataObjFromInv?.protection }}
-                    </p>
-                    <p v-else-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.CLOTHES">
-                        К атаке: {{ getDataObjFromInv?.attack }}<br/>
-                        К защите: {{ getDataObjFromInv?.protection }}
-                    </p>
-                    <p v-else-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.MEDICAL">
-                        К атаке: {{ getDataObjFromInv?.attack }}<br/>
-                        К здоровью: {{ getDataObjFromInv?.health }}
-                    </p>
-                    <p v-else-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.EAT">
-                        К здоровью: {{ getDataObjFromInv?.health }}<br/>
-                        К сытости: {{ getDataObjFromInv?.satietiFood }}<br/>
+                    <p>
+                        К атаке: {{ getDataObjFromInv?.attack }}<br />
+                        К защите: {{ getDataObjFromInv?.protection }} <br />
+                        К здоровью: {{ getDataObjFromInv?.health }}<br />
+                        К сытости: {{ getDataObjFromInv?.satietiFood }}<br />
                         К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
                     </p>
                 </div>
-    
-                <hr class="border-t-2 border-amber-600 my-2" >
-    
-                <button v-if="actObjFromInv !== undefined && actObjFromInv !== ''" class="border-2 text-xs p-2 cursor-pointer bg-mauve-600" @click="deleteObjFromInventory">Удалить со склада</button>
+
+                <hr class="border-t-2 border-amber-600 my-2">
+
+                <button
+                    v-if="actObjFromInv !== undefined && actObjFromInv !== ''"
+                    class="border-2 text-xs p-2 cursor-pointer bg-mauve-600"
+                    @click="deleteObjFromInventory"
+                >Удалить со склада</button>
 
             </div>
             <div v-else>
@@ -151,5 +178,4 @@ const deleteObjFromInventory = (): void => {
 
 .actObj {
     border-color: #f59e0b;
-}
-</style>
+}</style>

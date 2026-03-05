@@ -1,4 +1,5 @@
 import type { IDataSheltersItem } from '@/types/global-types'
+import { EDataItemsInTheGame } from '@/constants/global-constants'
 
 export const DATA_SHELTERS: IDataSheltersItem[] = [
     {
@@ -71,7 +72,7 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         selected: true,
         active: true,
         coord: 236,
-        inventory: ["medical-bag", "head-cap-white-blue", "weapon-machete"],
+        inventory: [EDataItemsInTheGame.MEDICAL_BAG, EDataItemsInTheGame.RED_BLOUSE, EDataItemsInTheGame.BACON, EDataItemsInTheGame.MACHETE],
         capacityInv: 7
     },
     {

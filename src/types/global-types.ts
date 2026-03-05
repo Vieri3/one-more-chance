@@ -1,4 +1,4 @@
-import { EDataRandomEventsPosition, EDataCategoriesFromInventar } from '@/constants/global-constants'
+import { EDataRandomEventsPosition } from '@/constants/global-constants'
 
 // global mass games
 export interface ILoadData {
@@ -60,42 +60,18 @@ export interface IDataSheltersItem {
 };
 
 // data types inventory
-interface IDataInventoryBase {
+export interface IDataInventoryItem {
     id: number;
-    category: EDataCategoriesFromInventar.CLOTHES | EDataCategoriesFromInventar.WEAPON | EDataCategoriesFromInventar.MEDICAL | EDataCategoriesFromInventar.EAT;
     name: string;
     description: string;
     src: string;
+    attack?: number;
+    protection?: number;
+    warming?: number;
+    health?: number;
+    satietiFood?: number,
+    satietiWater?: number,
 };
-
-interface IDataInventoryClothes extends IDataInventoryBase {
-    category: EDataCategoriesFromInventar.CLOTHES 
-    attack: number;
-    protection: number;
-    warming: number;
-};
-
-interface IDataInventoryWeapon extends IDataInventoryBase {
-    category: EDataCategoriesFromInventar.WEAPON 
-    attack: number;
-    protection: number;
-};
-
-interface IDataInventoryMedical extends IDataInventoryBase {
-    category: EDataCategoriesFromInventar.MEDICAL 
-    attack: number,
-    health: number;
-};
-
-interface IDataInventoryEat extends IDataInventoryBase {
-    category: EDataCategoriesFromInventar.EAT 
-    health: number;
-    satietiFood: number,
-    satietiWater: number,
-};
-
-export type IDataInventoryItem = IDataInventoryClothes | IDataInventoryWeapon | IDataInventoryMedical | IDataInventoryEat;
-
 
 // global functions types
 export interface IGetDate {

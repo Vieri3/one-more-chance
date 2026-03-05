@@ -1,5 +1,5 @@
 import type { IDataRandomEventsItem } from '@/types/global-types'
-import { EDataRandomEventsPosition } from '@/constants/global-constants'
+import { EDataRandomEventsPosition, EDataItemsInTheGame } from '@/constants/global-constants'
 
 export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
     {
@@ -14,7 +14,7 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         // true - добавляем, false - отнимаем:)  
         action: true, 
         // то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает )    
-        eventBody: "eat-bacon",
+        eventBody: EDataItemsInTheGame.BACON,
     },
     {
         id: 2,
@@ -22,7 +22,7 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         position: EDataRandomEventsPosition.INVENTORY,
         description: "Бродячий кабан, ранее попавший в капкан, цепью зацепился за трещину в асфальте. На складе будет пополение запасов мяска",
         action: true,
-        eventBody: "eat-bacon",
+        eventBody: EDataItemsInTheGame.BACON,
     },
     {
         id: 3,
@@ -30,23 +30,23 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         position: EDataRandomEventsPosition.PEOPLE,
         description: "Вам удалось подстрелить пару уток пролетавшиз над вашем местом дислокации",
         action: true,
-        eventBody: "eat-bacon",
+        eventBody: EDataItemsInTheGame.BACON,
     },
     {
         id: 4,
         name: "Бродячий зомби охотник",
-        position: EDataRandomEventsPosition.PEOPLE,
+        position: EDataRandomEventsPosition.INVENTORY,
         description: "Вот так добыча, сама прибрела. Старый охотник превратившийся в мертвяка сам прибрел обвешанный аммуницией. Теперь есть винтовка и патроны к ней.",
         action: true,
-        eventBody: "weapon-shotgun",
+        eventBody: EDataItemsInTheGame.SHOTGUN,
     },
     {
         id: 5,
-        name: "Бродячий зомби",
+        name: "Стиляга - зомби",
         position: EDataRandomEventsPosition.INVENTORY,
         description: "Вот так добыча, сама прибрела. Свежий Ходячий в свитере с Оленем. Похоже и до эпидемии у него небыло вкуса",
         action: true,
-        eventBody: "body-reindeer-sweater",
+        eventBody: EDataItemsInTheGame.REINDEER_SWEATER,
     },
     {
         id: 6,
@@ -54,7 +54,7 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         position: EDataRandomEventsPosition.INVENTORY,
         description: "Вот этот воришка Енот, украл со склада кусок добротного мяса! Надеюсь он будет сыт сполна. Иначе в следующий раз он сам станет для нас куском мяса",
         action: false,
-        eventBody: "eat-bacon",
+        eventBody: EDataItemsInTheGame.BACON,
     },
     {
         id: 7,
@@ -62,6 +62,6 @@ export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
         position: EDataRandomEventsPosition.INVENTORY,
         description: "Каким-то нелепым образом на складе стало меньше вещей. Что произошло? Как так случилось? Нужно вызывать Каневского...",
         action: false,
-        eventBody: "",
+        eventBody: EDataItemsInTheGame.NOTHING,
     }
 ];
