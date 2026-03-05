@@ -101,7 +101,7 @@ const deleteObjFromInventory = (): void => {
     
                 <hr class="border-t-2 border-amber-600 my-2" >
     
-                <div>
+                <div class="text-sm">
                     <p v-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.WEAPON">
                         К атаке: {{ getDataObjFromInv?.attack }}<br/>
                         К защите: {{ getDataObjFromInv?.protection }}
@@ -117,7 +117,7 @@ const deleteObjFromInventory = (): void => {
                     <p v-else-if="getDataObjFromInv?.category === EDataCategoriesFromInventar.EAT">
                         К здоровью: {{ getDataObjFromInv?.health }}<br/>
                         К сытости: {{ getDataObjFromInv?.satietiFood }}<br/>
-                        К здоровью: {{ getDataObjFromInv?.satietiWater }}
+                        К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
                     </p>
                 </div>
     

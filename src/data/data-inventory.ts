@@ -24,7 +24,7 @@ export const dataInventory: IDataInventoryItem[] = [
         id: 2,
         category: EDataCategoriesFromInventar.WEAPON, 
         name: "Мачете",
-        description: "",
+        description: "Мачете, словно из фильма МАЧЭТЭ. Острый металлический, иногда застряет в черепухе, но оттолкнув тело ногой в грудь, вытаскивается и норм.",
         src: "weapon-machete",
         // характеристика добавляющий к атаке 
         attack: 5,                  
@@ -35,18 +35,18 @@ export const dataInventory: IDataInventoryItem[] = [
         id: 3,
         category: EDataCategoriesFromInventar.MEDICAL, 
         name: "Медицинский чемодан",
-        description: "",
+        description: "Медицинский чемоданчик, практически не использован. Стащили видиммо из кареты скорой помощи",
         src: "medical-bag",
         // характеристика добавляющий к атаке 
-        attack: 0,                  
+        attack: 5,                  
         // характеристика добавляющий к здоровью 
-        health: 5,                  
+        health: 25,                  
     },
     {
         id: 4,
         category: EDataCategoriesFromInventar.EAT, 
         name: "Бекон",
-        description: "",
+        description: "Кусочек мясца!! Довольно таки вкусно, с учётом реалий за окном..",
         src: "eat-bacon",
         // характеристика добавляющий к здоровью 
         health: 2,                    
