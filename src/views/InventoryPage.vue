@@ -23,7 +23,7 @@ const actObjFromInv = ref<string>('')
 // индекс ячейки для активной рамки
 const actBorderObjFromInv = ref<number | null>(null);
 // сортировочный массив инвентаря который будет показывать на экран выбранное из типов
-const getSortDataObjFromInv = ref<string[]>(getDataSelectedShelter.value?.inventory);
+const getSortDataObjFromInv = ref<string[]>(getDataSelectedShelter.value?.inventory as string[]);
 // основной массив инвентаря который выводит его из ДАТА данных но делает его computed полем
 const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
     return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
@@ -36,11 +36,13 @@ console.log(getSortDataObjFromInv.value);
 function checkInv(index: number, name: string): void {
     actIdx.value = index;
     // функция принимает значени предмета и отделяет первое слово до симводла - которое показываеткатегорию предмета и сортирует по этому слову
-    function sortInventar(pos: string) {
+    function sortInventar(pos: string): void {
+        //@ts-ignore
         getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory.filter(item => item.substring(0, item.indexOf('-')) == pos)
     }
     switch (name) {
         case EDataCategoriesFromInventar.ALL:
+            //@ts-ignore
             getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory
             break;
         case EDataCategoriesFromInventar.WEAPON:
