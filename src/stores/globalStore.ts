@@ -31,7 +31,8 @@ export const useGlobalStore = defineStore('global', () => {
     const getArraySelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES.filter(hero => hero.selected));
 
     // геттеры для получения убежища имеющих флаг (selected: true)
-    const getDataSelectedShelter = computed<IDataSheltersItem | undefined>(() => globalArray.SHELTERS.find(el => el.selected));
+    // Добаваем "!" в конце, чтобы сказать TS, что результат точно не undefined
+    const getDataSelectedShelter = computed<IDataSheltersItem>(() => globalArray.SHELTERS.find(el => el.selected)!);
 
     //геттер для получения даты 
     const getDate = computed<IGetDate>(() => globalArray.DATE);

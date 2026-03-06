@@ -37,7 +37,6 @@ function checkInv(index: number, name: string): void {
     actIdx.value = index;
     // функция принимает значени предмета и отделяет первое слово до симводла - которое показываеткатегорию предмета и сортирует по этому слову
     function sortInventar(pos: string): void {
-        //@ts-ignore
         getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory.filter(item => item.substring(0, item.indexOf('-')) == pos)
     }
     switch (name) {
