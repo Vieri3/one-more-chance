@@ -17,9 +17,9 @@ loadData()
 const globalStore = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
 // какой элемент навигации активный
-const actIdx = ref<number>(0)
+const actIdx = ref<number>(0);
 // реактивное использование имя-код из инвентаря 
-const actObjFromInv = ref<string>('')
+const actObjFromInv = ref<string>('');
 // индекс ячейки для активной рамки
 const actBorderObjFromInv = ref<number | null>(null);
 // сортировочный массив инвентаря который будет показывать на экран выбранное из типов
@@ -27,8 +27,7 @@ const getSortDataObjFromInv = ref<string[]>(getDataSelectedShelter.value?.invent
 // основной массив инвентаря который выводит его из ДАТА данных но делает его computed полем
 const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
     return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
-})
-
+});
 // функция перключает вкладки показывает активную вкладку и отображает сортировку по принадлежности
 function checkInv(index: number, name: string): void {
     actIdx.value = index;
@@ -66,6 +65,7 @@ function getDataObjFromInvOnAside(num: number): void {
 // удаляем из массива Геттера инвентаря предмет
 const deleteObjFromInventory = (): void => {
     deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
+    actBorderObjFromInv.value = null;
     saveData()
 }
 
