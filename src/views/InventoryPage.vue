@@ -22,9 +22,9 @@ const actIdx = ref<number>(0);
 const actObjFromInv = ref<string>('');
 // индекс ячейки для активной рамки
 const actBorderObjFromInv = ref<number | null>(null);
-// сортировочный массив инвентаря который будет показывать на экран выбранное из типов
+// сортировочный массив инвентаря который будет ОТОБРАЖАТЬСЯ на экран выбранное из типов
 const getSortDataObjFromInv = ref<string[]>(getDataSelectedShelter.value?.inventory as string[]);
-// основной массив инвентаря который выводит его из ДАТА данных но делает его computed полем
+// основной массив данных ПРЕДМЕТА из data-inventory файла инвентаря который выводит его данные просто на экран
 const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
     return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
 });
@@ -66,9 +66,11 @@ function getDataObjFromInvOnAside(num: number): void {
 }
 // удаляем из массива Геттера инвентаря предмет
 const deleteObjFromInventory = (): void => {
-    // костыль 
-    deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
+    // удаляем из сортировочного массива чтобы не было видно обьекта
     deleteFromArrayOnName(actObjFromInv.value, getSortDataObjFromInv.value);
+    // удаляем из основного массива предметов инвентаря
+    deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
+    // убираем активную рамку вокруг ранее выбранного предмета
     actBorderObjFromInv.value = null;
     saveData()
 }

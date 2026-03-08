@@ -1,5 +1,14 @@
 import { EDataRandomEventsPosition } from '@/constants/global-constants'
 
+type TInventoryHeroMax6Readonly = 
+  | readonly [] 
+  | readonly [string] 
+  | readonly [string, string] 
+  | readonly [string, string, string] 
+  | readonly [string, string, string, string] 
+  | readonly [string, string, string, string, string] 
+  | readonly [string, string, string, string, string, string];
+
 // global mass games
 export interface ILoadData {
     HEROES: IDataHeroesItem[];
@@ -13,14 +22,14 @@ export interface ILoadData {
 export interface IDataHeroesItem {
     id: number;
     name: string;
-    male: string;
+    male: "woman" | "man";
     year: number;
     ethnicity: string;
     imgThumb: string;
     selected: boolean;
-    status: string;
-    desc: string;
-    inventory: Array<string>;
+    status: "alive" | "dead";
+    description: string;
+    inventory: TInventoryHeroMax6Readonly;
     health: number;
     attack: number;
     protection: number;
@@ -89,3 +98,4 @@ export interface IGetCounters {
     countRandomEvents: number;
     countPatrolling: number;
 }
+
