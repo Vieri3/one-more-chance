@@ -72,6 +72,8 @@ const deleteObjFromInventory = (): void => {
     deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
     // убираем активную рамку вокруг ранее выбранного предмета
     actBorderObjFromInv.value = null;
+    // убираем данные обьекта с панели aside 
+    actObjFromInv.value = '';
     saveData()
 }
 
