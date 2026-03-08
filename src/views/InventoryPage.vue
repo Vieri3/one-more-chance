@@ -124,7 +124,7 @@ const deleteObjFromInventory = (): void => {
         </article>
 
         <!--боковая панель действий связанных с инвентаремм-->
-        <aside class="w-50 p-2 border border-amber-900">
+        <aside class="w-50 p-2 border border-amber-900 flex flex-col">
 
             <div v-if="actObjFromInv !== undefined && actObjFromInv !== ''">
 
@@ -170,6 +170,14 @@ const deleteObjFromInventory = (): void => {
             </div>
             <div v-else>
                 Выберите предмет в инвентаре и тут появится информация, но не пустую ячейку
+            </div>
+
+            <div class="mt-auto">
+                <img
+                    class="mx-auto border-2 p-2 rounded-2xl mb-2 border-sky-500"
+                    :src="'./inventory/' + 'eat-bacon' + '.png'"
+                    alt="getDataObjFromInv?.name"
+                />
             </div>
 
 
