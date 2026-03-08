@@ -8,11 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+*.local
+dist-ssr
 public/*
 !public/logo.png
+!public/.htaccess
 dist
-dist-ssr
-*.local
 .env
 
 # Editor directories and files
