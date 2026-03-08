@@ -30,11 +30,11 @@ const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
 });
 // функция перключает вкладки показывает активную вкладку и отображает сортировку по принадлежности
 function checkInv(index: number, name: string): void {
-    // делаем активным элемент выбранного в меню раздела
+    // делаем активным элемент навигации в меню раздела
     actIdx.value = index;
-    // сбрасываем активную клетку
+    // сбрасываем активную клетку активный предмет
     actBorderObjFromInv.value = null;
-    // функция принимает значени предмета и отделяет первое слово до симводла - которое показываеткатегорию предмета и сортирует по этому слову
+    // функция принимает значени предмета и отделяет первое слово до символа - которое показывает категорию предмета и сортирует по этому слову
     function sortInventar(pos: string): void {
         getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory.filter(item => item.substring(0, item.indexOf('-')) == pos)
     }
@@ -66,7 +66,9 @@ function getDataObjFromInvOnAside(num: number): void {
 }
 // удаляем из массива Геттера инвентаря предмет
 const deleteObjFromInventory = (): void => {
+    // костыль 
     deleteFromArrayOnName(actObjFromInv.value, getDataSelectedShelter.value!.inventory);
+    deleteFromArrayOnName(actObjFromInv.value, getSortDataObjFromInv.value);
     actBorderObjFromInv.value = null;
     saveData()
 }
