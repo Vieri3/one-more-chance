@@ -29,9 +29,6 @@ const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
     return dataInventory.find((obj) => obj.src == actObjFromInv.value) ?? null
 })
 
-console.log(getSortDataObjFromInv.value);
-
-
 // функция перключает вкладки показывает активную вкладку и отображает сортировку по принадлежности
 function checkInv(index: number, name: string): void {
     actIdx.value = index;
@@ -81,7 +78,7 @@ const deleteObjFromInventory = (): void => {
         <!--инвентарь-->
         <article
             class="bg-image w-150"
-            :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgInv + '.png'})` }"
+            :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgInv + '.png'})` }"
         >
             <section class="w-130 bg-gray-700/50 main-font mt-2 mx-auto rounded">
                 <!--Навигация инвентаря-->
@@ -110,7 +107,7 @@ const deleteObjFromInventory = (): void => {
                         <img
                             v-if="idx <= getSortDataObjFromInv?.length"
                             class="p-2"
-                            :src="'/inventory/' + getSortDataObjFromInv[idx - 1] + '.png'"
+                            :src="'./inventory/' + getSortDataObjFromInv[idx - 1] + '.png'"
                             :alt="getSortDataObjFromInv[idx - 1]"
                         >
                     </div>
@@ -127,7 +124,7 @@ const deleteObjFromInventory = (): void => {
 
                 <img
                     class="mx-auto border-2 p-2 rounded-2xl mb-2"
-                    :src="'/inventory/' + getDataObjFromInv?.src + '.png'"
+                    :src="'./inventory/' + getDataObjFromInv?.src + '.png'"
                     :alt="getDataObjFromInv?.name"
                 />
 

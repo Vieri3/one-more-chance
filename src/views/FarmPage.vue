@@ -16,7 +16,7 @@ const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 <template>
     <TheHeader />
-    <div class="w-200 h-150 flex justify-center mx-auto bg-image" :style="{ backgroundImage: `url(${'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgFarm + '.png'})` }">
+    <div class="w-200 h-150 flex justify-center mx-auto bg-image" :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgFarm + '.png'})` }">
         <h2 class="text-2xl text-red-500">ферма</h2>
     </div>
     <TheFooter />

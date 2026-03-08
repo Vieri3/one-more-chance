@@ -23,7 +23,7 @@ const getDataHero = computed<IDataHeroesItem | null>(() => {
         class="bg-gray-700/60"
     >
         <img
-            src="/different/specifications-heroes.png"
+            src="./different/specifications-heroes.png"
             alt="specifications-heroes"
         >
     </div>
@@ -35,7 +35,7 @@ const getDataHero = computed<IDataHeroesItem | null>(() => {
         <div
             class="col-start-1 col-span-3 row-start-1 row-span-4 lg:col-start-1 lg:col-span-3 lg:row-start-1 lg:row-span-4 p-2">
             <img
-                :src="'/heroes/' + getDataHero?.imgThumb + '.png'"
+                :src="'./heroes/' + getDataHero?.imgThumb + '.png'"
                 :alt="getDataHero?.name"
             >
         </div>

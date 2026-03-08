@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './index.html',
-    './src/**/*.{js,jsx,ts,tsx,vue,html}',  // Сканируем все Vue и JS/TS файлы в папке src
+    './src/**/*.{js,ts,vue,html}',  // Сканируем все Vue и JS/TS файлы в папке src
   ],
   plugins: [],
 }

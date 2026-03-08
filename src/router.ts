@@ -11,6 +11,7 @@ import NotFound from "@/views/NotFound.vue"
 
 const routes = [
     { path: '/', component: HomePage, meta: { title: 'one-more-chance' } },
+    { path: '/index.html', redirect:'/' },          // костыль
     { path: '/choice-of-heroes', component: ChoiceOfHeroesPage, meta: { title: 'Выбор героев' } },
     { path: '/inventory', component: InventoryPage, meta: { title: 'Инвентарь' } },
     { path: '/farm', component: FarmPage, meta: { title: 'Ферма' } },
@@ -22,7 +23,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(/*(import.meta.env.BASE_URL)*/),
+    history: createWebHistory((import.meta.env.BASE_URL)),
     routes
 });
 

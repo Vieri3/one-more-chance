@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router';
 onMounted(() => {
     const RAND_NUM = Math.floor(Math.random() * 5);
     const bgElement = document.querySelector<HTMLElement>('.start-bg');
-    if (bgElement) bgElement.style.backgroundImage = `url('/home-page/start-bg-${RAND_NUM}.png')`;
+    if (bgElement) bgElement.style.backgroundImage = `url('./home-page/start-bg-${RAND_NUM}.png')`;
 });
 // Используем для перехода на другие страницы в js
 const router = useRouter();
