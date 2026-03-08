@@ -23,7 +23,7 @@ const getDataHero = computed<IDataHeroesItem | null>(() => {
         class="bg-gray-700/60"
     >
         <img
-            src="./different/specifications-heroes.png"
+            src="/different/specifications-heroes.png"
             alt="specifications-heroes"
         >
     </div>

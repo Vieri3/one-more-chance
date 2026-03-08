@@ -54,7 +54,7 @@ const getIdHero = (id: number): void => {
             <!-- mini-map -->
             <section class="size-50 border border-amber-500">
                 <img
-                    :src="'/map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgThumb + '.png'"
+                    :src="'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgThumb + '.png'"
                     :alt="getDataSelectedShelter?.name"
                 />
             </section>

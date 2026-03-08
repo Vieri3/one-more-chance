@@ -27,7 +27,7 @@ watch(() => props.LDN, () => doubleToggle())
             v-if="loadingDayNight"
         >
             <img
-                src="./different/day-night.png"
+                src="/different/day-night.png"
                 alt="day-nigth"
             >
         </div>
