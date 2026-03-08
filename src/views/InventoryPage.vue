@@ -30,14 +30,16 @@ const getDataObjFromInv = computed<IDataInventoryItem | null>(() => {
 });
 // функция перключает вкладки показывает активную вкладку и отображает сортировку по принадлежности
 function checkInv(index: number, name: string): void {
+    // делаем активным элемент выбранного в меню раздела
     actIdx.value = index;
+    // сбрасываем активную клетку
+    actBorderObjFromInv.value = null;
     // функция принимает значени предмета и отделяет первое слово до симводла - которое показываеткатегорию предмета и сортирует по этому слову
     function sortInventar(pos: string): void {
         getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory.filter(item => item.substring(0, item.indexOf('-')) == pos)
     }
     switch (name) {
         case EDataCategoriesFromInventar.ALL:
-            //@ts-ignore
             getSortDataObjFromInv.value = getDataSelectedShelter.value?.inventory
             break;
         case EDataCategoriesFromInventar.WEAPON:
@@ -133,24 +135,22 @@ const deleteObjFromInventory = (): void => {
                 <hr class="border-t-2 border-amber-600 my-2">
 
                 <div class="text-sm">
-                    <p>
-                        <span v-if="getDataObjFromInv?.attack">
-                            К атаке: {{ getDataObjFromInv?.attack }}<br />
-                        </span>
+                    <span v-if="getDataObjFromInv?.attack">
+                        К атаке: {{ getDataObjFromInv?.attack }}<br />
+                    </span>
 
-                        <span v-if="getDataObjFromInv?.protection">
-                            К защите: {{ getDataObjFromInv?.protection }} <br />
-                        </span>
-                        <span v-if="getDataObjFromInv?.health">
-                            К здоровью: {{ getDataObjFromInv?.health }}<br />
-                        </span>
-                        <span v-if="getDataObjFromInv?.satietiFood">
-                            К сытости: {{ getDataObjFromInv?.satietiFood }}<br />
-                        </span>
-                        <span v-if="getDataObjFromInv?.satietiWater">
-                            К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
-                        </span>
-                    </p>
+                    <span v-if="getDataObjFromInv?.protection">
+                        К защите: {{ getDataObjFromInv?.protection }} <br />
+                    </span>
+                    <span v-if="getDataObjFromInv?.health">
+                        К здоровью: {{ getDataObjFromInv?.health }}<br />
+                    </span>
+                    <span v-if="getDataObjFromInv?.satietiFood">
+                        К сытости: {{ getDataObjFromInv?.satietiFood }}<br />
+                    </span>
+                    <span v-if="getDataObjFromInv?.satietiWater">
+                        К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
+                    </span>
                 </div>
 
                 <hr class="border-t-2 border-amber-600 my-2">
