@@ -70,7 +70,7 @@ const deleteObjFromInventory = (): void => {
 }
 
 </script>
- 
+
 <template>
     <TheHeader />
 
@@ -134,11 +134,22 @@ const deleteObjFromInventory = (): void => {
 
                 <div class="text-sm">
                     <p>
-                        К атаке: {{ getDataObjFromInv?.attack }}<br />
-                        К защите: {{ getDataObjFromInv?.protection }} <br />
-                        К здоровью: {{ getDataObjFromInv?.health }}<br />
-                        К сытости: {{ getDataObjFromInv?.satietiFood }}<br />
-                        К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
+                        <span v-if="getDataObjFromInv?.attack">
+                            К атаке: {{ getDataObjFromInv?.attack }}<br />
+                        </span>
+
+                        <span v-if="getDataObjFromInv?.protection">
+                            К защите: {{ getDataObjFromInv?.protection }} <br />
+                        </span>
+                        <span v-if="getDataObjFromInv?.health">
+                            К здоровью: {{ getDataObjFromInv?.health }}<br />
+                        </span>
+                        <span v-if="getDataObjFromInv?.satietiFood">
+                            К сытости: {{ getDataObjFromInv?.satietiFood }}<br />
+                        </span>
+                        <span v-if="getDataObjFromInv?.satietiWater">
+                            К уталению жажды: {{ getDataObjFromInv?.satietiWater }}
+                        </span>
                     </p>
                 </div>
 
@@ -176,4 +187,5 @@ const deleteObjFromInventory = (): void => {
 
 .actObj {
     border-color: #f59e0b;
-}</style>
+}
+</style>

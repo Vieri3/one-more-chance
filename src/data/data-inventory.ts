@@ -10,9 +10,7 @@ export const dataInventory: IDataInventoryItem[] = [
         // описание
         description: "Белая кепка с синим козырьком! Возможно такие раньше носили бейсболисты! Защита от солнца, и то она очень плотная, скорее от дождя. Также подойдет для тех кто носит длинные волосы. Чтобы Ходячий не смог схватить за волосы.",       
         // нахвание картинки 
-        src: EDataItemsInTheGame.CAP_WHITE_BLUE,     
-        // характеристика добавляющий к атаке 
-        attack: 0,                      
+        src: EDataItemsInTheGame.CAP_WHITE_BLUE,                       
         // характеристика добавляющий к защите 
         protection: 1,                  
         // характеристика характеризующий согрев (относится к одежде) от 1 - 10              
@@ -55,7 +53,6 @@ export const dataInventory: IDataInventoryItem[] = [
         name: "Свитер с оленями",
         description: "",
         src: EDataItemsInTheGame.REINDEER_SWEATER,
-        attack: 0,
         protection: 2,
         warming: 2
     },
@@ -64,8 +61,7 @@ export const dataInventory: IDataInventoryItem[] = [
         name: "Синие джинсы",
         description: "",
         src: EDataItemsInTheGame.BLUE_JEANS,
-        attack: 0,
-        protection: 0,
+        protection: 1,
         warming: 2
     },
     {
@@ -73,9 +69,7 @@ export const dataInventory: IDataInventoryItem[] = [
         name: "Сланцы зелено-желтые",
         description: "",
         src: EDataItemsInTheGame.SLATES_Y_G,
-        attack: 0,
-        protection: 0,
-        warming: 2
+        protection: 1,
     },
     {
         id: 8,
@@ -91,7 +85,6 @@ export const dataInventory: IDataInventoryItem[] = [
         name: "Кепка NY",
         description: "",
         src: EDataItemsInTheGame.CAP_NY,
-        attack: 0,
         protection: 1,
         warming: 2
     },
@@ -100,16 +93,14 @@ export const dataInventory: IDataInventoryItem[] = [
         name: "Зимняя шапка синяя",
         description: "",
         src: EDataItemsInTheGame.WINTER_BLUE,
-        attack: 0,
         protection: 2,
         warming: 2
     },
     {
         id: 11,
         name: "Красная кофта",
-        description: "",
+        description: "Просто красная кофта! возможно такой фасон носила Мэри из Silent Hill",
         src: EDataItemsInTheGame.RED_BLOUSE,
-        attack: 0,
         protection: 2,
         warming: 2
     },
