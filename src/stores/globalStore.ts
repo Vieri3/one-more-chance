@@ -21,6 +21,9 @@ export const useGlobalStore = defineStore('global', () => {
     // массив id выбранных героев
     const getArrayHeroesIdSelected = ref<number[]>([]);
 
+    // строка вывода предупредительного сообщения
+    const OutWarningMessageStrRef = ref<string>('');
+
     // геттеры для получения массива героев
     const getArrayHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES);
 
@@ -64,43 +67,45 @@ export const useGlobalStore = defineStore('global', () => {
         } catch (error) {
             console.error('Ошибка загрузки: ', error)
         }
-    }
+    };
 
     // функция сохранения игры
     const saveData = () => localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
     // функция когда выбираем героя на старте игры то меняем ему флаг и выбранный герой  подсвечивается
-    function selectedItem(callback: number): void {
+    const selectedItem = (callback: number): void => {
         getArrayHeroesIdSelected.value.push(callback);
         const hero = globalArray.HEROES.find(h => h.id == callback);
         if(hero) hero.selected = true;
-    }
+    };
     //сброс всех флагов выбора игроков
     const selectedHerosReset = () => {
         getArrayHeroesIdSelected.value = [];
         globalArray.HEROES.map(item => item.selected = false);
-    }
+    };
     // счетчик случайных событий
     const stepRandomEvents = () => {
         // Лучше всего явно проверить, что данные загружены, прежде чем что-то делать.
         if(globalArray.COUNTERS) globalArray.COUNTERS.countRandomEvents--;
-    }
+    };
     // счетчик событий патрулирования
     const stepCountPatrolling = () => {
         //Если вы абсолютно уверены, что функция stepCountPatrolling вызывается только после того, как данные загружены, можно использовать оператор ! (non-null assertion). Это говорит TypeScript: «Заткнись, я знаю, что тут не null».
         globalArray.COUNTERS!.countPatrolling--;
-    }
+    };
     // после прошедшего дня счетчики обнуляются
     const resetCountREandP = () => {
         globalArray.COUNTERS!.countRandomEvents = dataCounters.countRandomEvents;
         globalArray.COUNTERS!.countPatrolling = dataCounters.countPatrolling;
-    }
+    };
     // функция по клику производит кормежку группы 
     const getPowerModeStore = () => {
         // присваиваем константе массив группы героев с новыми параметрами после кормежки 
         const arraySelectedHeroes = getPowerModeFn(globalArray.WEATHER!.temperature, getArraySelectedHeroes.value);
        // делаем подмену массива героев которые за сутки проголодались и у них ушли параметры еда и вода
         getMergingArraysFn(globalArray.HEROES, arraySelectedHeroes)
-    }
+    };
+    // функция которая принимамет строку предупреждения и возвращает ее 
+    const getWarningMessage = (str: string): void => { OutWarningMessageStrRef.value = str };
 
     //сброс всех флагов выбора карты для перехода на карту общую
     // function selectedSheltersReset() {
@@ -117,14 +122,14 @@ export const useGlobalStore = defineStore('global', () => {
     const getCalendarStore = () => {
         const dateNow = getCalendarFn(globalArray.DATE!.date, globalArray.DATE!.month, globalArray.DATE!.year);
         globalArray.DATE = dateNow
-    }
+    };
     // функция получения погоды
     const getWeatherStore = () => {
         // погода в этот день
         const weatherNow = getWeatherFn(getDate.value!.month);
         // записываем температуру в глобальный массив
         globalArray.WEATHER = weatherNow
-    }
+    };
 
     return {
 
@@ -136,6 +141,7 @@ export const useGlobalStore = defineStore('global', () => {
         getArrayHeroes,
         getArraySelectedHeroes,
         getCounters,
+        OutWarningMessageStrRef,
 
         getDataSelectedShelter,
         getDate,
@@ -154,6 +160,7 @@ export const useGlobalStore = defineStore('global', () => {
         getWeatherStore,
         saveData,
         loadData,
+        getWarningMessage
 
     }
 

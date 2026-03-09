@@ -12,7 +12,7 @@ import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
 const { loadData, saveData } = useGlobalStore();
-loadData()
+loadData();
 
 const globalStore = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
@@ -58,12 +58,12 @@ function checkInv(index: number, name: string): void {
             alert("КУку Ёпта!!!")
     }
 
-}
+};
 // функция показывает сбоку полную инфу об предмет из инвентаря и красит рамку активного предмета
 function getDataObjFromInvOnAside(num: number): void {
     actBorderObjFromInv.value = num
     actObjFromInv.value = getSortDataObjFromInv.value[num - 1]
-}
+};
 // удаляем из массива Геттера инвентаря предмет
 const deleteObjFromInventory = (): void => {
     // удаляем из сортировочного массива чтобы не было видно обьекта
@@ -75,7 +75,7 @@ const deleteObjFromInventory = (): void => {
     // убираем данные обьекта с панели aside 
     actObjFromInv.value = '';
     saveData()
-}
+};
 
 </script>
 
@@ -186,6 +186,7 @@ const deleteObjFromInventory = (): void => {
     </main>
 
     <TheFooter />
+
 </template>
 
 <style scoped>

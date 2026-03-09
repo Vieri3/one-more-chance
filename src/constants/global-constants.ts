@@ -57,3 +57,7 @@ export const enum EDataItemsInTheGame {
     SHOTGUN = 'weapon-shotgun'
 
 }
+
+export const enum EDataWarningMessage {
+    FULL_INVENTORY = "Ваш Инвентарь переполнен"
+}

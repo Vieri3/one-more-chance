@@ -1,22 +1,23 @@
 <script setup lang="ts">
 
 import { DATA_RANDOM_EVENTS } from '@/data/data-random-events'
-import { EDataRandomEventsPosition } from '@/constants/global-constants'
+import { EDataRandomEventsPosition, EDataWarningMessage } from '@/constants/global-constants'
 import { reactive, watch } from 'vue'
 import { useGlobalStore } from '@/stores/globalStore'
 import { storeToRefs } from 'pinia'
 
 const globalStore = useGlobalStore();
+const { getWarningMessage } = useGlobalStore();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 const props = defineProps({
     triggerRE: Boolean
-})
+});
 
 interface RandomEventsState {
   name: string;
   description: string;
-}
+};
 
 // Не рекомендуется использовать аргумент для джененрика reactive() СОВЕТ ОТ VUE
 const randomEvents: RandomEventsState = reactive({
@@ -49,6 +50,8 @@ function getRandomEvents(): void {
                     shelterInventory.push(RAND_EVENTS_BODY)   
                 }else{
                     // тебя перенаправляет в инвентарь + предлагает заменить ил почистить инвентарь
+                    // выполняется функия которая возвращает сообщение предупреждение что переполнен инвентарь
+                    getWarningMessage(EDataWarningMessage.FULL_INVENTORY)
                 }
             }else if(!RAND_EVENTS_ACTION && RAND_EVENTS_BODY === ""){
                 // возможно заменить на функцию которая будет убирать случайный предмет в массиве инвентаря
@@ -70,7 +73,7 @@ function getRandomEvents(): void {
     }
 };
 
-watch(() => props.triggerRE, () => getRandomEvents())
+watch(() => props.triggerRE, () => getRandomEvents());
 
 </script>
 

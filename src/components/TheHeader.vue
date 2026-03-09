@@ -24,4 +24,5 @@ import AppMenu from '@/components/AppMenu.vue'
 <style scoped>
 .router-link-active {
     color: #f59e0b !important;
-}</style>
+}
+</style>

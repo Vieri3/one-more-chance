@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
-import { useGlobalStore } from '@/stores/globalStore';
-import { storeToRefs } from 'pinia';
+import { useGlobalStore } from '@/stores/globalStore'
+import { storeToRefs } from 'pinia'
 
-const emits = defineEmits(['triggerRE', 'triggerLDN']);
+const emits = defineEmits(['triggerRE', 'triggerLDN'])
 
 const globalStore = useGlobalStore();
 const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveData, getPowerModeStore } = useGlobalStore();
@@ -13,57 +13,57 @@ const getRandomEvents = async (): Promise<void> => {
     // передаем триггер эмитс наверх событие для вызова функции getRandomEvents() из файла AppEventsScreen.vue и для вывода случайного события на экран
     await new Promise<void>((resolve) => {
         emits('triggerRE');
-        resolve()
+        resolve();
     });
     // функция счетчика для случайных событий (х3)
     await new Promise<void>((resolve) => {
         stepRandomEvents();
-        resolve()
+        resolve();
     });
     // функция сохранения игры 
     await new Promise<void>((resolve) => {
         saveData();
-        resolve()
+        resolve();
     });
-}
+};
 
 const getNextDay = async (): Promise<void> => {
     // передаем триггер эмитс наверх событие для заставки НОЧЬ ДЕНЬ
     await new Promise<void>((resolve) => {
         emits('triggerLDN');
-        resolve()
+        resolve();
     });
     // меняем дату
     await new Promise<void>((resolve) => {
         getCalendarStore();
-        resolve()
+        resolve();
     });
     // меняем погоду
     await new Promise<void>((resolve) => {
         getWeatherStore();
-        resolve()
+        resolve();
     });
     // сбрасываем очки случайных событий и патрулирования
     await new Promise<void>((resolve) => {
         resetCountREandP();
-        resolve()
+        resolve();
     });
     // производим снятие характеристик по еде и воде у героев
     await new Promise<void>((resolve) => {
         getPowerModeStore();
-        resolve()
+        resolve();
     });
     // сохраняем
     await new Promise<void>((resolve) => {
         saveData();
-        resolve()
+        resolve();
     });
-}
+};
 
 const getPatrolling = () => {
     stepCountPatrolling();
     saveData();
-}
+};
 
 </script>
 

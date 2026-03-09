@@ -17,7 +17,7 @@ const { getDataSelectedShelter } = storeToRefs(globalStore);
 <template>
     <TheHeader />
     <div class="w-200 h-150 flex justify-center mx-auto bg-image" :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgGroop + '.png'})` }">
-        <h2 class="text-2xl text-red-500">герои группа храрактеристики</h2>
+        <h2 class="text-2xl text-red-500">герои, группа, характеристики</h2>
     </div>
     <TheFooter />
 </template>

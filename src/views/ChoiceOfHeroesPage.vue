@@ -31,13 +31,13 @@ const addNewItem = (event: Event): void => {
     } else {
         console.warn('Event target has no id');
     }
-}
+};
 
 // сохраняем то что навыбирали и переходим в игру
 const goToGamePage = ():void => {
     saveData();
     router.replace('/location');
-}
+};
 
 </script>
 

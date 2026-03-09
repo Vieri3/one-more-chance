@@ -1,15 +1,16 @@
 <script setup lang="ts">
 
-import TheHeader from '@/components/TheHeader.vue';
-import AppBtnsActions from '@/components/AppBtnsActions.vue';
-import AppEventScreen from '@/components/AppEventScreen.vue';
-import AppDayNightScreen from '@/components/AppDayNightScreen.vue';
-import AppWindowHeroHaracteristics from '@/components/AppWindowHeroHaracteristics.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import TheHeader from '@/components/TheHeader.vue'
+import AppBtnsActions from '@/components/AppBtnsActions.vue'
+import AppEventScreen from '@/components/AppEventScreen.vue'
+import AppDayNightScreen from '@/components/AppDayNightScreen.vue'
+import AppWindowHeroHaracteristics from '@/components/AppWindowHeroHaracteristics.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
-import { ref } from 'vue';
-import { useGlobalStore } from '@/stores/globalStore';
-import { storeToRefs } from 'pinia';
+import { ref } from 'vue'
+import { useGlobalStore } from '@/stores/globalStore'
+import { storeToRefs } from 'pinia'
+
 
 const { loadData } = useGlobalStore();
 loadData();
@@ -44,7 +45,7 @@ const getIdHero = (id: number): void => {
             <!-- окно сообщений, событий действий при патрулировании -->
             <section
                 class="text-white border-sky-600 bg-yellow-600/50 border-4 p-2 m-2 h-50 w-146">
-                <AppEventScreen :triggerRE="triggerRandomEvents" />
+                <AppEventScreen :triggerRE="triggerRandomEvents"  />
             </section>
 
         </article>
