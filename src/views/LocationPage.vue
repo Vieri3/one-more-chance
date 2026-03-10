@@ -18,7 +18,6 @@ loadData();
 const globalStore = useGlobalStore();
 const { getArraySelectedHeroes, getDataSelectedShelter } = storeToRefs(globalStore);
 
-const triggerRandomEvents = ref<boolean>(false);
 const idHeroInGroop = ref<number>(0);
 
 const getIdHero = (id: number): void => {
@@ -32,9 +31,12 @@ const getIdHero = (id: number): void => {
 
     <main class="w-200 h-150 mx-auto flex border border-amber-900 text-center">
         <!--просто анимация после нажатия кнопки следующий день-->
-        <AppDayNightScreen /> 
+        <AppDayNightScreen />
 
-        <article class="w-150 bg-image flex flex-col justify-between" :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgMain + '.png'})` }">
+        <article
+            class="w-150 bg-image flex flex-col justify-between"
+            :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgMain + '.png'})` }"
+        >
 
             <!-- окно сообщение событий рандомных -->
             <section class="text-white border-yellow-600 bg-sky-600/50 border-4 p-2 m-2 h-75 w-146">
@@ -42,9 +44,8 @@ const getIdHero = (id: number): void => {
             </section>
 
             <!-- окно сообщений, событий действий при патрулировании -->
-            <section
-                class="text-white border-sky-600 bg-yellow-600/50 border-4 p-2 m-2 h-50 w-146">
-                <AppEventScreen :triggerRE="triggerRandomEvents"  />
+            <section class="text-white border-sky-600 bg-yellow-600/50 border-4 p-2 m-2 h-50 w-146">
+                <AppEventScreen />
             </section>
 
         </article>
@@ -79,9 +80,7 @@ const getIdHero = (id: number): void => {
             <section
                 class="w-50 h-27 flex items-center justify-around border border-amber-500 gap-5 *:cursor-pointer *:border-2"
             >
-                <AppBtnsActions
-                    @triggerRE="triggerRandomEvents = !triggerRandomEvents"
-                />
+                <AppBtnsActions />
             </section>
 
             <!-- Окно характеристики героя-->

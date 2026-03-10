@@ -1,12 +1,13 @@
 <script setup lang="ts">
 
+import { storeToRefs } from 'pinia'
 import { useGlobalStore } from '@/stores/globalStore'
 import { useDayNightScreen } from '@/composables/day-night-screen';
-import { storeToRefs } from 'pinia'
-
-const emits = defineEmits(['triggerRE']);
-
+import { useRandomEvents } from '@/composables/random-events';
+// получаем геттер(функция) для вызова заставки день/ночь
 const { getCheckedAnimationDayNightScreen } = useDayNightScreen();
+// получаем геттер(функцию) выполняем действия связанные с случайными событиями
+const { getActionRandomEvents } = useRandomEvents();
 
 const globalStore = useGlobalStore();
 const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveData, getPowerModeStore } = useGlobalStore();
@@ -15,7 +16,7 @@ const { getCounters } = storeToRefs(globalStore);
 const getRandomEvents = async (): Promise<void> => {
     // передаем триггер эмитс наверх событие для вызова функции getRandomEvents() из файла AppEventsScreen.vue и для вывода случайного события на экран
     await new Promise<void>((resolve) => {
-        emits('triggerRE');
+        getActionRandomEvents();
         resolve();
     });
     // функция счетчика для случайных событий (х3)

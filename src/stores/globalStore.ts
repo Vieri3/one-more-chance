@@ -125,7 +125,6 @@ export const useGlobalStore = defineStore('global', () => {
         getArrayHeroes,
         getArraySelectedHeroes,
         getCounters,
-
         getDataSelectedShelter,
         getDate,
         getWeather,
@@ -137,8 +136,6 @@ export const useGlobalStore = defineStore('global', () => {
         stepCountPatrolling,
         resetCountREandP,
         getPowerModeStore,
-        // selectedSheltersReset,
-        // goInLocation,
         getCalendarStore,
         getWeatherStore,
         saveData,
