@@ -1,8 +1,8 @@
 import type { ILoadData, IGetDate, IGetWeather, IGetCounters, IDataHeroesItem, IDataSheltersItem } from '@/types/global-types'
 import { dataDate, dataCounters, dataWeather } from '@/constants/global-constants'
-import { DATA_HEROES } from "@/data/data-heroes.ts"
-import { DATA_SHELTERS } from "@/data/data-shelters.ts"
-import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions.ts"
+import { DATA_HEROES } from "@/data/data-heroes"
+import { DATA_SHELTERS } from "@/data/data-shelters"
+import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions"
 
 import { defineStore } from "pinia";
 import { reactive, ref, computed } from "vue";
@@ -20,9 +20,6 @@ export const useGlobalStore = defineStore('global', () => {
 
     // массив id выбранных героев
     const getArrayHeroesIdSelected = ref<number[]>([]);
-
-    // строка вывода предупредительного сообщения
-    const OutWarningMessageStrRef = ref<string>('');
 
     // геттеры для получения массива героев
     const getArrayHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES);
@@ -104,19 +101,6 @@ export const useGlobalStore = defineStore('global', () => {
        // делаем подмену массива героев которые за сутки проголодались и у них ушли параметры еда и вода
         getMergingArraysFn(globalArray.HEROES, arraySelectedHeroes)
     };
-    // функция которая принимамет строку предупреждения и возвращает ее 
-    const getWarningMessage = (str: string): void => { OutWarningMessageStrRef.value = str };
-
-    //сброс всех флагов выбора карты для перехода на карту общую
-    // function selectedSheltersReset() {
-    //     return globalArray.SHELTERS.map(item => item.selected = false);
-    // }
-
-    //сброс всех флагов выбора карты для перехода на карту общую
-    // function goInLocation() {
-    //     const location = globalArray.SHELTERS.find(loc => loc.active == true);
-    //     location.selected = true;
-    // }
 
     // календарь 
     const getCalendarStore = () => {
@@ -141,7 +125,6 @@ export const useGlobalStore = defineStore('global', () => {
         getArrayHeroes,
         getArraySelectedHeroes,
         getCounters,
-        OutWarningMessageStrRef,
 
         getDataSelectedShelter,
         getDate,
@@ -160,7 +143,6 @@ export const useGlobalStore = defineStore('global', () => {
         getWeatherStore,
         saveData,
         loadData,
-        getWarningMessage
 
     }
 

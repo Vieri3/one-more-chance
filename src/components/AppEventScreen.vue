@@ -4,10 +4,11 @@ import { DATA_RANDOM_EVENTS } from '@/data/data-random-events'
 import { EDataRandomEventsPosition, EDataWarningMessage } from '@/constants/global-constants'
 import { reactive, watch } from 'vue'
 import { useGlobalStore } from '@/stores/globalStore'
+import { useWarningMessage } from '@/composables/warning-messages'
 import { storeToRefs } from 'pinia'
 
 const globalStore = useGlobalStore();
-const { getWarningMessage } = useGlobalStore();
+const { getWarningMessage } = useWarningMessage();
 const { getDataSelectedShelter } = storeToRefs(globalStore);
 
 const props = defineProps({
@@ -50,7 +51,7 @@ function getRandomEvents(): void {
                     shelterInventory.push(RAND_EVENTS_BODY)   
                 }else{
                     // тебя перенаправляет в инвентарь + предлагает заменить ил почистить инвентарь
-                    // выполняется функия которая возвращает сообщение предупреждение что переполнен инвентарь
+                    // выполняется функия которая возвращает сообщение - предупреждение что переполнен инвентарь
                     getWarningMessage(EDataWarningMessage.FULL_INVENTORY)
                 }
             }else if(!RAND_EVENTS_ACTION && RAND_EVENTS_BODY === ""){
