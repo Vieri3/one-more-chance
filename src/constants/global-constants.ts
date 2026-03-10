@@ -59,5 +59,7 @@ export const enum EDataItemsInTheGame {
 }
 
 export const enum EDataWarningMessage {
-    FULL_INVENTORY = "Ваш Инвентарь переполнен"
+    FULL_INVENTORY = 'Ваш Инвентарь переполнен',
+    STARVATION = 'Герой испытавает голодание',
+    THIRST = 'Герой испытывает жажду'
 }

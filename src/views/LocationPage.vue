@@ -19,7 +19,6 @@ const globalStore = useGlobalStore();
 const { getArraySelectedHeroes, getDataSelectedShelter } = storeToRefs(globalStore);
 
 const triggerRandomEvents = ref<boolean>(false);
-const triggerLoadingDayNigh = ref<boolean>(false);
 const idHeroInGroop = ref<number>(0);
 
 const getIdHero = (id: number): void => {
@@ -33,7 +32,7 @@ const getIdHero = (id: number): void => {
 
     <main class="w-200 h-150 mx-auto flex border border-amber-900 text-center">
         <!--просто анимация после нажатия кнопки следующий день-->
-        <AppDayNightScreen :LDN="triggerLoadingDayNigh" />
+        <AppDayNightScreen /> 
 
         <article class="w-150 bg-image flex flex-col justify-between" :style="{ backgroundImage: `url(${'./map/' + getDataSelectedShelter?.folder + '/' + getDataSelectedShelter?.imgMain + '.png'})` }">
 
@@ -82,7 +81,6 @@ const getIdHero = (id: number): void => {
             >
                 <AppBtnsActions
                     @triggerRE="triggerRandomEvents = !triggerRandomEvents"
-                    @triggerLDN="triggerLoadingDayNigh = !triggerLoadingDayNigh"
                 />
             </section>
 

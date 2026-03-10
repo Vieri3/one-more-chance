@@ -1,19 +1,8 @@
 <script setup lang="ts">
+ 
+import { useDayNightScreen } from '@/composables/day-night-screen'
 
-import { ref, watch } from 'vue';
-
-const props = defineProps({
-    LDN: Boolean
-})
-
-const loadingDayNight = ref<boolean>(false);
-
-function doubleToggle() {
-    loadingDayNight.value = !loadingDayNight.value;
-    setTimeout(() => { loadingDayNight.value = !loadingDayNight.value }, 2000);
-};
-
-watch(() => props.LDN, () => doubleToggle())
+const { loadingDayNight } = useDayNightScreen()
 
 </script>
 

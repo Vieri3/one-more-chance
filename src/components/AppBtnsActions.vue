@@ -1,9 +1,12 @@
 <script setup lang="ts">
 
 import { useGlobalStore } from '@/stores/globalStore'
+import { useDayNightScreen } from '@/composables/day-night-screen';
 import { storeToRefs } from 'pinia'
 
-const emits = defineEmits(['triggerRE', 'triggerLDN'])
+const emits = defineEmits(['triggerRE']);
+
+const { getCheckedAnimationDayNightScreen } = useDayNightScreen();
 
 const globalStore = useGlobalStore();
 const { stepRandomEvents, stepCountPatrolling, resetCountREandP, getCalendarStore, getWeatherStore, saveData, getPowerModeStore } = useGlobalStore();
@@ -28,9 +31,9 @@ const getRandomEvents = async (): Promise<void> => {
 };
 
 const getNextDay = async (): Promise<void> => {
-    // передаем триггер эмитс наверх событие для заставки НОЧЬ ДЕНЬ
+    // вызываем функцию из composables для заставки НОЧЬ ДЕНЬ
     await new Promise<void>((resolve) => {
-        emits('triggerLDN');
+        getCheckedAnimationDayNightScreen();
         resolve();
     });
     // меняем дату
