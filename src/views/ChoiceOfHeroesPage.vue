@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { IDataHeroesItem } from '@/types/global-types'
+import { computed } from "vue";
 // импортируем по дефолту функцию 
 import { useGlobalStore } from '@/stores/globalStore'
 //storeToRefs — функция библиотеки Pinia для управления состоянием в Vue.js, 
@@ -7,34 +9,43 @@ import { useGlobalStore } from '@/stores/globalStore'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
+const router = useRouter();
+
 // подгружаем данные в реактивное хранилище из обычных data-... ts
 const { loadData, saveData } = useGlobalStore();
 loadData();
-
-const router = useRouter();
 
 // присваиваем переменной массив из глобального хранилища Героев
 const globalStore = useGlobalStore();
 
 // для реактивности используем StoretoRefs
-const { lenArrayHeroesIdSelected, getArrayHeroes, getArraySelectedHeroes } = storeToRefs(globalStore);
+const { globalArray } = storeToRefs(globalStore);
 
-// напрямую из хранилища
-const { selectedItem, selectedHerosReset } = globalStore;
+// геттеры для получения героев имеющих флаг True (выбранных героев)
+const getArraySelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.value.HEROES.filter((hero: IDataHeroesItem) => hero.selected === true));
 
-// Метод добавления 
-const addNewItem = (event: Event): void => {
+// геттеры для получения героев имеющих флаг False (не выбранных героев)
+const getArrayNotSelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.value.HEROES.filter((hero: IDataHeroesItem) => hero.selected === false));
+
+// функция когда выбираем героя на старте игры то меняем ему флаг и выбранный герой  подсвечивается
+const checkedSelectingHero = (event: Event): void => {
     const target = event.target as HTMLElement;
     // Проверяем, что target действительно HTMLElement и имеет id
     if (target && target.id) {
-        selectedItem(parseInt(target.id));
+        const hero = globalArray.value.HEROES.find((hero: IDataHeroesItem) => hero.id === parseInt(target.id));
+        hero!.selected = !hero!.selected
     } else {
         console.warn('Event target has no id');
     }
 };
 
+//сброс всех флагов выбора игроков
+const resetSelectingHero = () => {
+    globalArray.value.HEROES.map((hero: IDataHeroesItem) => hero.selected = false);
+};
+
 // сохраняем то что навыбирали и переходим в игру
-const goToGamePage = ():void => {
+const goToGamePage = (): void => {
     saveData();
     router.replace('/location');
 };
@@ -50,17 +61,16 @@ const goToGamePage = ():void => {
             class="col-start-2 col-span-9 row-start-1 row-span-7 lg:col-start-2 lg:col-span-9 lg:row-start-1 lg:row-span-7 grid grid-cols-9 justify-items-center content-between p-2">
 
             <div
-                v-for="hero in getArrayHeroes"
-                :class="lenArrayHeroesIdSelected > 2 ? 'pointer-events-none' : ''"
+                v-for="hero in getArrayNotSelectedHeroes"
+                :class="getArraySelectedHeroes.length > 2 ? 'pointer-events-none' : ''"
                 :key="hero.id"
             >
                 <img
                     class="h-18 hover:scale-130 cursor-pointer border-2 border-blue-400 hover:border-blue-600"
-                    :class="hero.selected == false ? '' : 'blinking-shadow pointer-events-none'"
                     :id="hero.id.toString()"
                     :src="'./heroes/' + hero.imgThumb + '.png'"
                     :alt="hero.name"
-                    @click="addNewItem"
+                    @click="checkedSelectingHero"
                 />
             </div>
 
@@ -68,8 +78,8 @@ const goToGamePage = ():void => {
 
         <!-- Кнопка очистить -->
         <div
-            @click="selectedHerosReset"
-            :class="lenArrayHeroesIdSelected < 1 ? 'pointer-events-none opacity-25' : 'hover:border-red-500 hover:bg-blue-100 hover:text-red-500 cursor-pointer'"
+            @click="resetSelectingHero"
+            :class="getArraySelectedHeroes.length < 1 ? 'pointer-events-none opacity-25' : 'hover:border-red-500 hover:bg-blue-100 hover:text-red-500 cursor-pointer'"
             class="text-black col-start-1 col-span-1 row-start-7 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-7 lg:row-span-1 mb-2 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400"
         >
             Сброс
@@ -77,7 +87,7 @@ const goToGamePage = ():void => {
 
         <!-- Кнопка принять и выполнить -->
         <div
-            :class="lenArrayHeroesIdSelected < 1 ? 'pointer-events-none opacity-25' : 'hover:border-green-500 hover:bg-blue-100 hover:text-green-500'"
+            :class="getArraySelectedHeroes.length < 1 ? 'pointer-events-none opacity-25' : 'hover:border-green-500 hover:bg-blue-100 hover:text-green-500'"
             @click="goToGamePage"
             class=" text-black col-start-1 col-span-1 row-start-6 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-6 lg:row-span-1 ml-1 flex items-center justify-content font-semibold rounded justify-center bg-white border-2 border-blue-400 cursor-pointer"
         >
@@ -86,16 +96,16 @@ const goToGamePage = ():void => {
 
         <!-- Количество героев -->
         <div
-            v-if="lenArrayHeroesIdSelected < 3"
+            v-if="getArraySelectedHeroes.length < 3"
             class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-blue-200 border-2 border-amber-600 text-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed"
         >
-            {{ lenArrayHeroesIdSelected }}
+            {{ getArraySelectedHeroes.length }}
         </div>
         <div
             v-else
             class="col-start-1 col-span-1 row-start-5 row-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-5 lg:row-span-1 ml-1 bg-amber-200 text-red-500 border-2 border-amber-600 flex items-center justify-content font-semibold rounded justify-center cursor-not-allowed"
         >
-            MAX!!!
+            MAX
         </div>
 
         <!-- выбранные персонажи -->
@@ -105,16 +115,18 @@ const goToGamePage = ():void => {
                 v-for="hero in getArraySelectedHeroes"
                 :key="hero.id"
                 class="p-2"
-        >
-            <img
-                :src="'./heroes/' + hero.imgThumb + '.png'"
-                :alt="hero.name"
-                class="border-2 border-green-500"
-            />
+            >
+                <img
+                    class="border-2 border-green-500 cursor-pointer"
+                    :id="hero.id.toString()"
+                    :src="'./heroes/' + hero.imgThumb + '.png'"
+                    :alt="hero.name"
+                    @click="checkedSelectingHero"
+                />
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </template>
 
 <style scoped>

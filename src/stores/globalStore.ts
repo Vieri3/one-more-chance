@@ -1,34 +1,22 @@
-import type { ILoadData, IGetDate, IGetWeather, IGetCounters, IDataHeroesItem, IDataSheltersItem } from '@/types/global-types'
+import type { ILoadData, IGetDate, IGetWeather, IGetCounters, IDataSheltersItem } from '@/types/global-types'
 import { dataDate, dataCounters, dataWeather } from '@/constants/global-constants'
 import { DATA_HEROES } from "@/data/data-heroes"
 import { DATA_SHELTERS } from "@/data/data-shelters"
 import { getPowerModeFn, getMergingArraysFn, getWeatherFn, getCalendarFn } from "@/utils/global-functions"
 
 import { defineStore } from "pinia";
-import { reactive, ref, computed } from "vue";
+import { reactive, computed } from "vue";
 
 export const useGlobalStore = defineStore('global', () => {
 
     // реактивный массив всех данных
-    const globalArray: ILoadData  = reactive({
+    const globalArray: ILoadData = reactive({
         HEROES: [],
         DATE: dataDate,
         SHELTERS: [],
         WEATHER: dataWeather,
         COUNTERS: dataCounters,
     });
-
-    // массив id выбранных героев
-    const getArrayHeroesIdSelected = ref<number[]>([]);
-
-    // геттеры для получения массива героев
-    const getArrayHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES);
-
-    // геттеры для получения длины массива ID героев
-    const lenArrayHeroesIdSelected = computed<number>(() => getArrayHeroesIdSelected.value.length);
-
-    // геттеры для получения героев имеющих флаг True (выбранных героев)
-    const getArraySelectedHeroes = computed<IDataHeroesItem[]>(() => globalArray.HEROES.filter(hero => hero.selected));
 
     // геттеры для получения убежища имеющих флаг (selected: true)
     // Добаваем "!" в конце, чтобы сказать TS, что результат точно не undefined
@@ -68,21 +56,11 @@ export const useGlobalStore = defineStore('global', () => {
 
     // функция сохранения игры
     const saveData = () => localStorage.setItem('one-more-chance', JSON.stringify(globalArray))
-    // функция когда выбираем героя на старте игры то меняем ему флаг и выбранный герой  подсвечивается
-    const selectedItem = (callback: number): void => {
-        getArrayHeroesIdSelected.value.push(callback);
-        const hero = globalArray.HEROES.find(h => h.id == callback);
-        if(hero) hero.selected = true;
-    };
-    //сброс всех флагов выбора игроков
-    const selectedHerosReset = () => {
-        getArrayHeroesIdSelected.value = [];
-        globalArray.HEROES.map(item => item.selected = false);
-    };
+
     // счетчик случайных событий
     const stepRandomEvents = () => {
         // Лучше всего явно проверить, что данные загружены, прежде чем что-то делать.
-        if(globalArray.COUNTERS) globalArray.COUNTERS.countRandomEvents--;
+        if (globalArray.COUNTERS) globalArray.COUNTERS.countRandomEvents--;
     };
     // счетчик событий патрулирования
     const stepCountPatrolling = () => {
@@ -98,7 +76,7 @@ export const useGlobalStore = defineStore('global', () => {
     const getPowerModeStore = () => {
         // присваиваем константе массив группы героев с новыми параметрами после кормежки 
         const arraySelectedHeroes = getPowerModeFn(globalArray.WEATHER!.temperature, getArraySelectedHeroes.value);
-       // делаем подмену массива героев которые за сутки проголодались и у них ушли параметры еда и вода
+        // делаем подмену массива героев которые за сутки проголодались и у них ушли параметры еда и вода
         getMergingArraysFn(globalArray.HEROES, arraySelectedHeroes)
     };
 
@@ -117,21 +95,16 @@ export const useGlobalStore = defineStore('global', () => {
 
     return {
 
-        // Состояние
+        // Состояние 
         globalArray,
 
         // Геттеры
-        lenArrayHeroesIdSelected,
-        getArrayHeroes,
-        getArraySelectedHeroes,
         getCounters,
         getDataSelectedShelter,
         getDate,
         getWeather,
 
         //действия с массивом
-        selectedItem,
-        selectedHerosReset,
         stepRandomEvents,
         stepCountPatrolling,
         resetCountREandP,
