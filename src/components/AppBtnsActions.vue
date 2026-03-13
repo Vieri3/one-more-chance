@@ -75,7 +75,7 @@ const getPatrolling = () => {
     <!--Случайное событие -->
     <button
         @click="getRandomEvents"
-        class="w-8 h-15 border-sky-600 bg-yellow-600 hover:bg-yellow-900 hover:scale-110"
+        class="btns_actions border-sky-600 bg-yellow-600 hover:bg-yellow-900"
         :class="getCounters.countRandomEvents > 0 ? '' : 'pointer-events-none opacity-50'"
     >
         &#127922;
@@ -88,12 +88,12 @@ const getPatrolling = () => {
     <button
         @click="getNextDay"
         :class="getCounters.countPatrolling > 0 ? 'pointer-events-none opacity-50' : ''"
-        class="w-8 h-15 border-sky-600 bg-purple-600 hover:bg-purple-900 hover:scale-110"
+        class="btns_actions border-sky-600 bg-purple-600 hover:bg-purple-900"
     >&#9203;</button>
     <!--Патрулирование -->
     <button
         @click="getPatrolling"
-        class="w-8 h-15 border-yellow-600 bg-sky-600 hover:bg-sky-900 hover:scale-110"
+        class="btns_actions border-yellow-600 bg-sky-600 hover:bg-sky-900"
     :class="getCounters.countPatrolling > 0 ? '' : 'pointer-events-none opacity-50'"
 >
     &#128274;

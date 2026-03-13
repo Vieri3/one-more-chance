@@ -1,7 +1,26 @@
 @import "tailwindcss";
 
+/* создаем свой класс со своими свойствами */
+@utility btns_actions {
+  @layer base {
+    @apply w-8 h-15 hover:scale-110;
+  }
+}
+/*
+@layer base {
+  h1 {
+    @apply my-8 border-t border-gray-200 ;
+  }
+} */
+
+/* @utility btn-свойство {
+  @layer components {
+    @apply my-8 border-t border-gray-200;
+  }
+} */
+
 .main-font {
-  font-family: Courier, monospace;
+  font-family: Courier, monospace;;
   font-weight: 600;
   color: rgb(0, 255, 0);
 }
