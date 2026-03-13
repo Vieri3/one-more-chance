@@ -1,13 +1,13 @@
 import { EDataRandomEventsPosition } from '@/constants/global-constants'
 
-type TInventoryHeroMax6Readonly = 
-  | readonly [] 
-  | readonly [string] 
-  | readonly [string, string] 
-  | readonly [string, string, string] 
-  | readonly [string, string, string, string] 
-  | readonly [string, string, string, string, string] 
-  | readonly [string, string, string, string, string, string];
+type TInventoryHeroMax6Readonly =
+    | readonly []
+    | readonly [string]
+    | readonly [string, string]
+    | readonly [string, string, string]
+    | readonly [string, string, string, string]
+    | readonly [string, string, string, string, string]
+    | readonly [string, string, string, string, string, string];
 
 // global mass games
 export interface ILoadData {
@@ -27,6 +27,7 @@ export interface IDataHeroesItem {
     ethnicity: string;
     imgThumb: string;
     selected: boolean;
+    active: boolean;
     status: "alive" | "dead";
     description: string;
     inventory: TInventoryHeroMax6Readonly;
