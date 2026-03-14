@@ -1,67 +1,72 @@
 import type { IDataRandomEventsItem } from '@/types/global-types'
-import { EDataRandomEventsPosition, EDataItemsInTheGame } from '@/constants/global-constants'
 
+/* 
+    code position
+    'inventory' = 0,
+    'people' = 1,
+    'farm' = 2
+*/
 export const DATA_RANDOM_EVENTS: IDataRandomEventsItem[] = [
     {
         // id события
         id: 1,
         // заголовок/название события 
-        name: "Заплутавшая белка", 
+        name: "Заплутавшая белка",
         // с кем будет происходить с людьми, базой, складом 
-        position: EDataRandomEventsPosition.INVENTORY,  
+        position: 0,
         // описание события
         description: "Случайная белка попала в капкан, увесистая, килограмм так на 8. Ужин на 2 человека точно",
         // true - добавляем, false - отнимаем:)  
-        action: true, 
+        action: true,
         // то что произойдет (минус здоровье кто-то заболел у кого то приступ или аппендицит, добавляем в инвентарь или чтото пропадает )    
-        eventBody: EDataItemsInTheGame.BACON,
+        eventBody: 4,
     },
     {
         id: 2,
         name: "Бродячий кабан",
-        position: EDataRandomEventsPosition.INVENTORY,
+        position: 0,
         description: "Бродячий кабан, ранее попавший в капкан, цепью зацепился за трещину в асфальте. На складе будет пополение запасов мяска",
         action: true,
-        eventBody: EDataItemsInTheGame.BACON,
+        eventBody: 4,
     },
     {
         id: 3,
         name: "Стая уток",
-        position: EDataRandomEventsPosition.PEOPLE,
+        position: 1,
         description: "Вам удалось подстрелить пару уток пролетавшиз над вашем местом дислокации",
         action: true,
-        eventBody: EDataItemsInTheGame.BACON,
+        eventBody: 4,
     },
     {
         id: 4,
         name: "Бродячий зомби охотник",
-        position: EDataRandomEventsPosition.INVENTORY,
+        position: 0,
         description: "Вот так добыча, сама прибрела. Старый охотник превратившийся в мертвяка сам прибрел обвешанный аммуницией. Теперь есть винтовка и патроны к ней.",
         action: true,
-        eventBody: EDataItemsInTheGame.SHOTGUN,
+        eventBody: 12,
     },
     {
         id: 5,
         name: "Стиляга - зомби",
-        position: EDataRandomEventsPosition.INVENTORY,
+        position: 0,
         description: "Вот так добыча, сама прибрела. Свежий Ходячий в свитере с Оленем. Похоже и до эпидемии у него небыло вкуса",
         action: true,
-        eventBody: EDataItemsInTheGame.REINDEER_SWEATER,
+        eventBody: 5,
     },
     {
         id: 6,
         name: "Воришка Енот",
-        position: EDataRandomEventsPosition.INVENTORY,
+        position: 0,
         description: "Вот этот воришка Енот, украл со склада кусок добротного мяса! Надеюсь он будет сыт сполна. Иначе в следующий раз он сам станет для нас куском мяса",
         action: false,
-        eventBody: EDataItemsInTheGame.BACON,
+        eventBody: 4,
     },
     {
         id: 7,
         name: "Пропажа!!!",
-        position: EDataRandomEventsPosition.INVENTORY,
+        position: 0,
         description: "Каким-то нелепым образом на складе стало меньше вещей. Что произошло? Как так случилось? Нужно вызывать Каневского...",
         action: false,
-        eventBody: EDataItemsInTheGame.NOTHING,
+        eventBody: null,
     }
 ];

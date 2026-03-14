@@ -1,34 +1,35 @@
 import type { IDataSheltersItem } from '@/types/global-types'
-import { EDataItemsInTheGame } from '@/constants/global-constants'
 
 export const DATA_SHELTERS: IDataSheltersItem[] = [
     {
         // Id убежища
         id: 1,
         // папка картинок в проекте
-        folder: "",
+        folder: "bus",
         // название убежища
-        name: "Prison",
+        name: "BuS prison",
         // миниатюра убежища (картинка общего вида) 
-        imgThumb: "prison",
+        imgThumb: "bus-thumb",
         // основная картинка, как выглядит внутри убежище
-        imgMain: "",
+        imgMain: "bus-img",
         // как выглядит место склада
-        imgInv: "",
+        imgInv: "bus-inventory",
         // как выглядит место фермы
-        imgFarm: "",
+        imgFarm: "bus-farm",
         // как выглядит страница где таблица группы
-        imgGroop: "",
+        imgGroop: "bus-groop",
         // флаг для выбора/показа на основной карте
         selected: false,
-        // флаг в котором мы находимся убежище
+        // флаг в котором мы находимся убежище 
         active: false,
         // координаты на карте для рисования точек
         coord: 234,
-        // стартовый инвентарь, что находится на базе
+        // стартовый инвентарь, что находится на базе (хранятся id элементов)
         inventory: [],
         // вместимость инвентаря базы
-        capacityInv: 10
+        capacityInv: 7,
+        // массив id героев которые находятся в этом убежище
+        heroes: []
     },
     {
         id: 2,
@@ -43,7 +44,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 369,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 3,
@@ -58,22 +60,24 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 58,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 4,
-        folder: "bus",
-        name: "BuS prison",
-        imgThumb: "bus-thumb",
-        imgMain: "bus-img",
-        imgInv: "bus-inventory",
-        imgFarm: "bus-farm",
-        imgGroop: "bus-groop",
+        folder: "Prison",
+        name: "",
+        imgThumb: "prison",
+        imgMain: "",
+        imgInv: "",
+        imgFarm: "",
+        imgGroop: "",
         selected: true,
         active: true,
         coord: 236,
-        inventory: [EDataItemsInTheGame.MEDICAL_BAG, EDataItemsInTheGame.RED_BLOUSE, EDataItemsInTheGame.BACON, EDataItemsInTheGame.MACHETE],
-        capacityInv: 7
+        inventory: [],
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 5,
@@ -88,7 +92,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 187,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 6,
@@ -103,7 +108,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 346,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 7,
@@ -118,7 +124,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 75,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 8,
@@ -133,7 +140,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 129,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 9,
@@ -148,7 +156,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 154,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 10,
@@ -163,7 +172,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 171,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 11,
@@ -178,7 +188,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 67,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 12,
@@ -193,7 +204,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 248,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 13,
@@ -208,7 +220,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 92,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 14,
@@ -223,7 +236,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 178,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 15,
@@ -238,7 +252,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 29,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     },
     {
         id: 16,
@@ -253,7 +268,8 @@ export const DATA_SHELTERS: IDataSheltersItem[] = [
         active: false,
         coord: 118,
         inventory: [],
-        capacityInv: 10
+        capacityInv: 10,
+        heroes: []
     }
 
 ];

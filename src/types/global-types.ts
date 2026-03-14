@@ -1,13 +1,12 @@
-import { EDataRandomEventsPosition } from '@/constants/global-constants'
 
 type TInventoryHeroMax6Readonly =
     | readonly []
-    | readonly [string]
-    | readonly [string, string]
-    | readonly [string, string, string]
-    | readonly [string, string, string, string]
-    | readonly [string, string, string, string, string]
-    | readonly [string, string, string, string, string, string];
+    | readonly [number]
+    | readonly [number, number]
+    | readonly [number, number, number]
+    | readonly [number, number, number, number]
+    | readonly [number, number, number, number, number]
+    | readonly [number, number, number, number, number, number];
 
 // global mass games
 export interface ILoadData {
@@ -27,7 +26,6 @@ export interface IDataHeroesItem {
     ethnicity: string;
     imgThumb: string;
     selected: boolean;
-    active: boolean;
     status: "alive" | "dead";
     description: string;
     inventory: TInventoryHeroMax6Readonly;
@@ -37,20 +35,20 @@ export interface IDataHeroesItem {
     satietiFood: number;
     satietiWater: number;
     equipment: {
-        head: string,
-        body: string,
-        legs: string,
-        foot: string,
+        body: number | null,
+        legs: number | null,
+        foot: number | null,
+        head: number | null,
     }
 };
 
 export interface IDataRandomEventsItem {
     id: number;
     name: string;
-    position: EDataRandomEventsPosition;
+    position: 0 | 1 | 2;
     description: string;
     action: boolean;
-    eventBody: string,
+    eventBody: number | null,
 };
 
 export interface IDataSheltersItem {
@@ -65,8 +63,9 @@ export interface IDataSheltersItem {
     selected: boolean;
     active: boolean;
     coord: number;
-    inventory: Array<string>
-    capacityInv: number
+    inventory: Array<number> | []
+    capacityInv: number,
+    heroes: Array<number> | []
 };
 
 // data types inventory

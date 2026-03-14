@@ -35,28 +35,6 @@ export const MASS_PAGE = [
     { text: 'Локация', href: '/location' },
     { text: 'Карта', href: '/map' },
 ];
-// НАЗВАНИЕ ИГРОВЫХ ПРЕДМЕТОВ  = НАЗВАНИЕ КАРТИНКИ ИГРОВЫХ ПРЕДМЕТОВ
-export const enum EDataItemsInTheGame {
-    NOTHING = "",
-    // CLOTHES
-    RED_BLOUSE = 'clothes-body-red-blouse',
-    REINDEER_SWEATER = 'clothes-body-reindeer-sweater',
-    LEATHER_AND_FUR_BOOTS = 'clothes-foot-leather-and-fur-boots',
-    CAP_WHITE_BLUE = 'clothes-head-cap-white-blue',
-    BLUE_JEANS = 'clothes-legs-blue-jeans',
-    SLATES_Y_G = 'clothes-foot-slates-yellow-green',
-    CAP_NY = 'clothes-head-cap-NY',
-    WINTER_BLUE = 'clothes-head-winter-blue',
-
-    // EAT
-    BACON = 'eat-bacon',
-    //MEDICAL
-    MEDICAL_BAG = 'medical-bag',
-    // WEAPON
-    MACHETE = 'weapon-machete',
-    SHOTGUN = 'weapon-shotgun'
-
-}
 
 export const enum EDataWarningMessage {
     FULL_INVENTORY = 'Ваш Инвентарь переполнен',

@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
-/* создаем свой класс со своими свойствами */
-@utility btns_actions {
-  @layer base {
-    @apply w-8 h-15 hover:scale-110;
-  }
+@theme{
+  --font-main: Courier, monospace;
 }
+
+/* создаем свой класс со своими свойствами */
+@layer components {
+    .btns_actions{
+      @apply w-8 h-15 hover:scale-110;
+    } 
+  }
+
 /*
 @layer base {
   h1 {
@@ -13,14 +18,14 @@
   }
 } */
 
-/* @utility btn-свойство {
-  @layer components {
-    @apply my-8 border-t border-gray-200;
+/*
+@layer utilites {
+  .container {
+    здесь просто переопределяем класс (что-то добавляем чтото изменяем под себя)
   }
 } */
 
 .main-font {
-  font-family: Courier, monospace;;
   font-weight: 600;
   color: rgb(0, 255, 0);
 }
