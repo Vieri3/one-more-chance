@@ -24,12 +24,10 @@
   }
 } */
 
-/*
+
 @layer utilites {
-  .container {
-    здесь просто переопределяем класс (что-то добавляем чтото изменяем под себя)
-  }
-} */
+  .hide-x-scrollbar::-webkit-scrollbar { width: 0 !important }
+}
 
 .main-font {
   font-weight: 600;
