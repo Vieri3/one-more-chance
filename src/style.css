@@ -6,6 +6,12 @@
 
 /* создаем свой класс со своими свойствами */
 @layer components {
+    .btn-home-page{
+      @apply hover:font-bold hover:text-2xl cursor-pointer 
+    }
+    .modal-home-page{
+      @apply w-full h-full bg-black/30 backdrop-blur-md flex items-center justify-center z-10 fixed top-0 left-0
+    }
     .btns_actions{
       @apply w-8 h-15 hover:scale-110;
     } 
@@ -39,4 +45,6 @@
   background-position: center;
 }
 
-  
+.text-modal-home-page{
+  font-size: clamp(.5rem, 3vw, 4rem);
+}
